@@ -17,7 +17,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[portfolio](team/nrysho.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities: Frontend
 
 ### Lim Zi Huan
 
@@ -26,7 +26,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[homepage](https://www.comp.nus.edu.sg/~zihuan/)]
 [[github](https://github.com/gluee003)]
 
-* Role: Sweatshop Worker 1
+* Role: Developer
+* Responsibilities: Backend Logic
 
 ### William Scott Win
 
@@ -45,8 +46,8 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[homepage](https://www.youtube.com/watch?v=zL19uMsnpSU)]
 [[github](https://github.com/Reiner-Ong)]
 
-* Role: Sweatshop Worker 2
-* Responsiblity: Assist Sweatshop Worker 1
+* Role: Developer 
+* Responsiblity: UI
 
 ### Chen Yoong Shee
 
@@ -55,5 +56,5 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[github](http://github.com/ash-l7)]
 [[portfolio](team/ash-l7.md)]
 
-* Role: Developer
-* Responsibilities: UI
+* Role: Developer, Snoozer
+* Responsibilities: Testing, Hibernate
