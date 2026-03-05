@@ -9,6 +9,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
+### Neryss Ho
+
+<img src="images/nrysho.png" width="200px">
+
+[[github](https://github.com/nrysho)]
+[[portfolio](team/nrysho.md)]
+
+* Role: Developer
+* Responsibilities: UI
+
 ### Lim Zi Huan
 
 <img src="images/gluee003.png" width="200px">
@@ -16,7 +26,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 [[homepage](https://www.comp.nus.edu.sg/~zihuan/)]
 [[github](https://github.com/gluee003)]
 
-* Role: Sweatshop Worker
+* Role: Sweatshop Worker 1
 
 ### William Scott Win
 
@@ -28,24 +38,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: OOP Logic
 
-### Johnny Doe
+### Reiner Ong Zheng Han
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/reiner-ong.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[homepage](https://www.youtube.com/watch?v=zL19uMsnpSU)]
+[[github](https://github.com/Reiner-Ong)]
 
-* Role: Developer
-* Responsibilities: Data
-
-### Jean Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Role: Sweatshop Worker 2
+* Responsiblity: Assist Sweatshop Worker 1
 
 ### Chen Yoong Shee
 
