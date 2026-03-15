@@ -14,8 +14,15 @@ public class CliSyntax {
     public static final Prefix PREFIX_EMAIL = new Prefix("e/");
     public static final Prefix PREFIX_ADDRESS = new Prefix("a/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
+    public static final Prefix PREFIX_ISHALAL = new Prefix("h/");
+    public static final Prefix PREFIX_OPENINGHOUR = new Prefix("o/");
+    public static final Prefix PREFIX_CLOSINGHOUR = new Prefix("c/");
+    public static final Prefix PREFIX_STARS = new Prefix("s/");
 
     /* Valid types */
     public static final String TYPE_PERSON = "person";
-    public static final List<String> VALID_TYPES = List.of(TYPE_PERSON);
+    public static final String TYPE_FNB = "fnb";
+    public static final String TYPE_ATTRACTION = "attraction";
+    public static final String TYPE_ACCOMMODATION = "accommodation";
+    public static final List<String> VALID_TYPES = List.of(TYPE_PERSON, TYPE_FNB, TYPE_ATTRACTION, TYPE_ACCOMMODATION);
 }

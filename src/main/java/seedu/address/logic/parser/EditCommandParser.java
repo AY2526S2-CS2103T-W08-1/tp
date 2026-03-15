@@ -3,9 +3,13 @@ package seedu.address.logic.parser;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_CLOSINGHOUR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ISHALAL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENINGHOUR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_STARS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.Collection;
@@ -18,6 +22,7 @@ import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditContactDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tag.Tag;
+
 
 /**
  * Parses input arguments and creates a new EditCommand object
@@ -32,7 +37,9 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL,
+                        PREFIX_ADDRESS, PREFIX_TAG, PREFIX_ISHALAL, PREFIX_OPENINGHOUR,
+                        PREFIX_CLOSINGHOUR, PREFIX_STARS);
 
         Index index;
 
@@ -59,7 +66,22 @@ public class EditCommandParser implements Parser<EditCommand> {
             editContactDescriptor.setAddress(ParserUtil.parseAddress(argMultimap.getValue(PREFIX_ADDRESS).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editContactDescriptor::setTags);
-
+        if (argMultimap.getValue(PREFIX_ISHALAL).isPresent()) {
+            editContactDescriptor.setHalal(ParserUtil.parseHalalStatus(
+                    argMultimap.getValue(PREFIX_ISHALAL).get()));
+        }
+        if (argMultimap.getValue(PREFIX_OPENINGHOUR).isPresent()) {
+            editContactDescriptor.setOpeningHour(ParserUtil.parseOpeningHour(
+                    argMultimap.getValue(PREFIX_OPENINGHOUR).get()));
+        }
+        if (argMultimap.getValue(PREFIX_CLOSINGHOUR).isPresent()) {
+            editContactDescriptor.setClosingHour(ParserUtil.parseClosingHour(
+                    argMultimap.getValue(PREFIX_CLOSINGHOUR).get()));
+        }
+        if (argMultimap.getValue(PREFIX_STARS).isPresent()) {
+            editContactDescriptor.setStars(ParserUtil.parseAccommodationStars(
+                    argMultimap.getValue(PREFIX_STARS).get()));
+        }
         if (!editContactDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }

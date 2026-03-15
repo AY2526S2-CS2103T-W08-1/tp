@@ -10,9 +10,13 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.contact.AccommodationStars;
 import seedu.address.model.contact.Address;
+import seedu.address.model.contact.ClosingHour;
 import seedu.address.model.contact.Email;
+import seedu.address.model.contact.HalalStatus;
 import seedu.address.model.contact.Name;
+import seedu.address.model.contact.OpeningHour;
 import seedu.address.model.contact.Phone;
 import seedu.address.model.tag.Tag;
 
@@ -135,5 +139,73 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String halalStatus} into a {@code Halal Status}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code halalStatus} is invalid.
+     */
+    public static HalalStatus parseHalalStatus(String halalStatus) throws ParseException {
+        if (halalStatus == null) {
+            return new HalalStatus("");
+        }
+        String trimmedHalalStatus = halalStatus.trim();
+        if (!HalalStatus.isValidHalalStatus(trimmedHalalStatus)) {
+            throw new ParseException(HalalStatus.MESSAGE_CONSTRAINTS);
+        }
+        return new HalalStatus(halalStatus);
+    }
+
+    /**
+     * Parses a {@code String openingHour} into an {@code Opening Hour}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code openingHour} is invalid.
+     */
+    public static OpeningHour parseOpeningHour(String openingHour) throws ParseException {
+        if (openingHour == null) {
+            return new OpeningHour("");
+        }
+        String trimmedOpeningHour = openingHour.trim();
+        if (!OpeningHour.isValidOpeningHour(trimmedOpeningHour)) {
+            throw new ParseException(OpeningHour.MESSAGE_CONSTRAINTS);
+        }
+        return new OpeningHour(trimmedOpeningHour);
+    }
+
+    /**
+     * Parses a {@code String closingHour} into an {@code Closing Hour}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code closingHour} is invalid.
+     */
+    public static ClosingHour parseClosingHour(String closingHour) throws ParseException {
+        if (closingHour == null) {
+            return new ClosingHour("");
+        }
+        String trimmedClosingHour = closingHour.trim();
+        if (!ClosingHour.isValidClosingHour(trimmedClosingHour)) {
+            throw new ParseException(ClosingHour.MESSAGE_CONSTRAINTS);
+        }
+        return new ClosingHour(trimmedClosingHour);
+    }
+
+    /**
+     * Parses a {@code String accommodationStar} into an {@code Accommodation Stars}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code accommodationStar} is invalid.
+     */
+    public static AccommodationStars parseAccommodationStars(String accommodationStar) throws ParseException {
+        if (accommodationStar == null) {
+            return new AccommodationStars("");
+        }
+        String trimmedAccommodationStar = accommodationStar.trim();
+        if (!AccommodationStars.isValidAccommodationStars(trimmedAccommodationStar)) {
+            throw new ParseException(AccommodationStars.MESSAGE_CONSTRAINTS);
+        }
+        return new AccommodationStars(trimmedAccommodationStar);
     }
 }
