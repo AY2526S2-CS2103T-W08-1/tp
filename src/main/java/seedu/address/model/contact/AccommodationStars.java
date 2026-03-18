@@ -23,10 +23,6 @@ public class AccommodationStars {
             this.value = value;
         }
 
-        public String getStars() {
-            return value;
-        }
-
         /**
          * Returns Stars value from an input string.
          */
@@ -83,7 +79,14 @@ public class AccommodationStars {
 
     @Override
     public String toString() {
-        return this.stars.getStars();
+        return "Stars: " + switch (stars) {
+        case ONE_STAR -> "1-Star";
+        case TWO_STAR -> "2-Star";
+        case THREE_STAR -> "3-Star";
+        case FOUR_STAR -> "4-Star";
+        case FIVE_STAR -> "5-Star";
+        default -> throw new IllegalArgumentException("Invalid stars: " + stars);
+        };
     }
 
     @Override
