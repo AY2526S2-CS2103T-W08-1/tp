@@ -14,7 +14,7 @@ import seedu.address.model.tour.Tour;
  */
 public class TourListCommand extends Command {
 
-    public static final String COMMAND_WORD = "tour_list";
+    public static final String COMMAND_WORD = "tour-list";
 
     public static final String MESSAGE_SUCCESS = "Tour Packages Available:";
 
