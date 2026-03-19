@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.tour.Tour;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for TourListCommand.
@@ -26,7 +27,12 @@ public class TourListCommandTest {
 
     @Test
     public void execute_listTours_success() {
-        String expectedMessage = TourListCommand.MESSAGE_SUCCESS + ":\n";
-        assertCommandSuccess(new TourListCommand(), model, expectedMessage, expectedModel);
+        StringBuilder expectedMessage = new StringBuilder(TourListCommand.MESSAGE_SUCCESS);
+        int index = 1;
+        for (Tour tour : model.getFilteredTourList()) {
+            expectedMessage.append(index).append(". ").append(tour.getTourName()).append("\n");
+            index++;
+        }
+        assertCommandSuccess(new TourListCommand(), model, expectedMessage.toString(), expectedModel);
     }
 }
