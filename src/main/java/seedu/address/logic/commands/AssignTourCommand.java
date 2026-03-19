@@ -21,7 +21,7 @@ import seedu.address.model.tour.Tour;
  */
 public class AssignTourCommand extends Command {
 
-    public static final String COMMAND_WORD = "assign-tour";
+    public static final String COMMAND_WORD = "tour-assign";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Assigns a tour to the contact identified by the index number used in the displayed contact list.\n"
