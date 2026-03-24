@@ -3,33 +3,62 @@ layout: page
 title: User Guide
 ---
 
+# Introduction
+
 Bivago is a **desktop contact management app** meant for tour guides. Along with basic contact management, it also helps
 you **efficiently look up contacts** associated with the different tour packages that you offer. The app supports
-different types of contacts including **people, FnB establishments, accommodations and attractions**. Through
-consolidating your contacts and tours in a single application, Bivago helps you plan and execute better and smoother
-tours for your clients.
+different types of contacts including **people, F&B establishments, accommodations and attractions**. Through
+consolidating your contacts and tours in a simple **Command Line Interface (CLI)** application, Bivago helps you plan
+and execute better and smoother tours for your clients.
 
 * Table of Contents
   {:toc}
 
---------------------------------------------------------------------------------------------------------------------
+---
+
+## How it serves you
+
+Bivago provides two main components:
+
+<panel header="Contact Management" type="seamless">
+Through Contact Management, you can **store different types of contacts** you work with. You can store contacts for
+people (e.g. drivers, shop owners), F&B establishments (e.g. street food vendors, restaurants), attractions (e.g.
+museums, amusement parks) and accommodation (e.g. hotels, hostels). For each type of contact, they come with additional
+ information relevant to that type such as Halal status, operating hours, and stars. Tags are also available for you
+ to store any additional information.
+</panel>
+
+<panel header="Tour Management" type="seamless">
+Through **Tour Management**, you can **store different tour packages** you offer and assign contacts with those tours.
+When planning to conduct a specific tour, you can see the assigned contacts at a glance and with the relevant
+information from the contacts, you can make informed decisions during tour planning. You can also benefit from tour
+management while conducting the tour as you can quickly view contact details on the day itself and contact them.
+</panel>
 
 ## Quick start
 
 1. Ensure you have Java `17` or above installed in your Computer.<br>
-   **Mac users:** Ensure you have the precise JDK version prescribed
-   [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+<panel header="How to Install?" type="seamless">
+**Windows users:** Follow the installation instructions
+[here](https://se-education.org/guides/tutorials/javaInstallationWindows.html).<br>
+**Mac users:** Follow the installation instructions
+[here](https://se-education.org/guides/tutorials/javaInstallationMac.html).<br>
+**Mac users:** Follow the installation instructions
+[here](https://se-education.org/guides/tutorials/javaInstallationMac.html).<br>
+</panel>
+2. Download the latest `.jar` file from [here](https://github.com/AY2526S2-CS2103T-W08-1/tp/releases).
 
-1. Download the latest `.jar` file from [here](https://github.com/AY2526S2-CS2103T-W08-1/tp/releases).
+3. Copy the file to the folder you want to use as the _home folder_ for Bivago.
 
-1. Copy the file to the folder you want to use as the _home folder_ for Bivago.
+4. Open a command terminal.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar Bivago.jar` command to
-   run the application.<br>
+6. Type `cd FILEPATH` to navigate to the folder you put the jar file in.
+
+7. Type `java -jar Bivago.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png) (TO UPDATE IMAGE UPON CHANGES TO DEFAULT GUI)
+   ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will
+8. Type a command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will
    display the program usage instructions.<br>
    Some example commands you can try:
 
@@ -40,15 +69,49 @@ tours for your clients.
 * `add type/person n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact
   named `John Doe` to the contact list.
 
-* `tour-add n/City Walking Tour` : Adds a contact named `City Walking Tour` to the tour list.
+* `tour-add n/City Walking Tour` : Adds a tour named `City Walking Tour` to the tour list.
 
 * `delete 3` : Deletes the third contact shown in the current contact list.
 
 * `exit` : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+9. Refer to the [Features](#features) below for details of each command.
 
---------------------------------------------------------------------------------------------------------------------
+---
+
+## Command summary
+
+### General
+
+| Action | Format, Examples |
+|--------|-----------------|
+| **Help** | `help` |
+| **Exit** | `exit` |
+
+### Contact Management
+
+| Action       | Format, Examples                                                                                                                                                                                                             |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add** | `add type/TYPE n/NAME p/PHONE e/EMAIL a/ADDRESS [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​` <br> e.g., `add type/person n/John Doe p/98765432 e/john@example.com a/311 Clementi Ave 2 t/friend` |
+| **Delete** | `delete INDEX` <br> e.g., `delete 3`                                                                                                                                                                                         |
+| **Edit** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​` <br> e.g., `edit 2 p/91234567 e/john_new@example.com`                                          |
+| **Find** | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find John Jane`                                                                                                                                                                   |
+| **List** | `list`                                                                                                                                                                                                                       |
+
+
+### Tour Management
+
+| Action       | Format, Examples                                                                  |
+|--------------|-----------------------------------------------------------------------------------|
+| **Add**      | `tour-add n/NAME` <br> e.g., `tour-add n/Le Royal Tour`                           |
+| **Delete**   | `tour-delete INDEX` <br> e.g., `tour-delete 2`                                    |
+| **Assign**   | `tour-assign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-assign 1 tour/2`     |
+| **Unassign** | `tour-unassign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-unassign 3 tour/5` |
+| **View**     | `tour-view INDEX` <br> e.g., `tour-view 1`                                        |
+| **Find** | `tour-find KEYWORD [MORE_KEYWORDS]` <br> e.g., `tour-find City Walking`           |
+| **List**     | `tour-list`                                                                       |
+
+---
 
 ## Features
 
@@ -68,8 +131,8 @@ tours for your clients.
 * Parameters can be in any order.<br>
   e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) will
-  be ignored.<br>
+* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) or
+ parameters not specific to the contact type will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines
@@ -99,12 +162,12 @@ manually.
 
 ### Editing the data file
 
-Bivago data are saved automatically as a JSON file `[JAR file location]/data/addressbook.json`. Advanced users are
-welcome to update data directly by editing that data file.
+Bivago data are saved automatically as a JSON file `[JAR file location]/data/bivago-data.json`.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your changes to the data file makes its format invalid, Bivago will discard all data and start with an empty data
- file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
+You are encouraged to make changes to the data using the commands provided by the app instead of manually editing the
+ data file. If you make changes to the data file making its format invalid, Bivago will discard all data and start with
+an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
 Furthermore, certain edits can cause the Bivago to behave in unexpected ways (e.g., if a value entered is outside of
  the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
@@ -118,29 +181,38 @@ Furthermore, certain edits can cause the Bivago to behave in unexpected ways (e.
 Adds a contact to the contact list.
 
 Format:
- `add type/TYPE n/NAME p/PHONE e/EMAIL a/ADDRESS [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​`
-
-* Available types: `person`, `fnb`, `accommodation`, `attraction`
-* Fields are type-specific:
-    * **FnB contacts**: `[h/HALAL_STATUS]`
-    * **Attraction contacts**: `[o/OPENING_HOUR] [c/CLOSING_HOUR]`
-    * **Accommodation contacts**: `[s/STARS]`
+`add type/TYPE n/NAME p/PHONE e/EMAIL a/ADDRESS [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A contact can have any number of tags (including 0)
 </div>
 
-**Field Constraints:**
+Available types: `person`, `fnb`, `accomm`, `attraction`
+
+**Type-specific Fields**:
+* F&B contacts: `[h/HALAL_STATUS]`
+* Attraction contacts: `[o/OPENING_HOUR] [c/CLOSING_HOUR]`
+* Accommodation contacts: `[s/STARS]`
+
+**Field Constraints**:
 * Halal Status must be `true` or `false` (default: `false`)
 * Opening Hours must be in `HH:mm` 24-hour format (default: `08:00`)
 * Closing Hours must be in `HH:mm` 24-hour format (default: `22:00`)
 * Stars must be a single digit from `1–5` (default: `3`)
 
+<div markdown="span" class="alert alert-warning">:exclamation: **Important:**
+Fields that are not applicable to the specified contact type will be ignored.
+For example, `h/true` will not apply to `person` contacts.
+</div>
+
 Examples:
-* `add type/person n/John Doe p/98765432 e/johnd@example.com a/311 Clementi Ave 2`
-* `add type/fnb n/Nasi Lemak Stall p/91234567 e/fnb@example.com a/Market Street h/true`
-* `add type/attraction n/USS p/67891234 e/uss@example.com a/Sentosa o/09:00 c/21:00`
-* `add type/accommodation n/Hotel 81 p/61234567 e/hotel@example.com a/Geylang s/4`
+* `add type/person n/John Doe p/98765432 e/johnd@example.com a/311 Clementi Ave 2` : Adds a person contact named `John Doe` to the contact list.
+
+* `add type/fnb n/Nasi Lemak Stall p/91234567 e/fnb@example.com a/Market Street h/true` : Adds an F&B contact named `Nasi Lemak Stall` with halal status set to `true`.
+
+* `add type/attraction n/USS p/67891234 e/uss@example.com a/Sentosa o/09:00 c/21:00` : Adds an attraction named `USS` with operating hours from `09:00` to `21:00`.
+
+* `add type/accommodation n/Hotel 81 p/61234567 e/hotel@example.com a/Geylang s/4` : Adds an accommodation named `Hotel 81` with a `4`-star rating.
 
 ### Listing all contacts : `list`
 
@@ -154,7 +226,7 @@ Format: `list`
 Edits an existing contact in the contact list.
 
 Format:
- `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​`
+`edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​`
 
 * Edits the contact at the specified `INDEX`
 * The index refers to the number shown in the displayed list
@@ -165,8 +237,9 @@ Format:
 * To remove all tags, use `t/` with no value
 
 Examples:
-* `edit 1 p/91234567 e/johndoe@example.com`
-* `edit 2 n/New Name t/`
+* `edit 1 p/91234567 e/johndoe@example.com` : Edits the first contact by updating the phone number to `91234567` and email to `johndoe@example.com`.
+
+* `edit 2 n/New Name t/` : Edits the second contact by updating the name to `New Name` and clearing all existing tags.
 
 ### Searching contacts by name: `find`
 
@@ -177,12 +250,13 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * Case-insensitive (e.g. `john` matches `John`)
 * Order does not matter
 * Only names are searched
-* Matches full words only
+* Matches **full words only**
 * Returns contacts matching at least one keyword (OR search)
 
 Examples:
-* `find John`
-* `find alex david`
+* `find John` : Finds and lists all contacts whose names contain `John`.
+
+* `find alex david` : Finds and lists all contacts whose names contain either `alex` or `david`.
 
 ### Deleting a contact : `delete`
 
@@ -194,8 +268,9 @@ Format: `delete INDEX`
 * Index must be a positive integer
 
 Examples:
-* `delete 2`
-* `find John` followed by `delete 1`
+* `delete 2` : Deletes the second contact shown in the current contact list.
+
+* `find John` followed by `delete 1` : Finds contacts with names containing `John`, then deletes the first contact from the search results.
 
 ---
 
@@ -208,7 +283,7 @@ Adds a tour package to the tour list.
 Format: `tour-add n/NAME`
 
 Examples:
-* `tour-add n/Le Royal Tour`
+* `tour-add n/Le Royal Tour` : Adds a tour named `Le Royal Tour` to the tour list.
 
 ### Listing tours: `tour-list`
 
@@ -218,50 +293,53 @@ Format: `tour-list`
 
 ### Assigning a tour: `tour-assign`
 
-Assigns a tour to a contact.
+Assigns a contact to a tour.
 
 Format: `tour-assign CONTACT_INDEX tour/TOUR_INDEX`
 
 * Both indices must be positive integers
 
 Examples:
-* `tour-assign 1 tour/2`
+* `tour-assign 1 tour/2` : Assigns the first contact in the current contact list to the second tour in the current
+tour list.
 
 ### Unassigning a tour: `tour-unassign`
 
-Unassigns a tour from a contact.
+Unassigns a contact from a tour.
 
 Format: `tour-unassign CONTACT_INDEX tour/TOUR_INDEX`
 
 * Both indices must be positive integers
 
 Examples:
-* `tour-unassign 3 tour/5`
+* `tour-unassign 3 tour/5` : Unassigns the third contact in the current contact list from the fifth tour in the current
+  tour list.
 
 ### Viewing a tour: `tour-view`
 
-Displays all contacts assigned to a specific tour.
+Displays all contacts assigned to a specified tour.
 
 Format: `tour-view INDEX`
 
 Examples:
-* `tour-view 1`
+* `tour-view 1` : Displays all contacts assigned to the first tour in the current tour list.
 
 ### Searching tours by name: `tour-find`
 
 Finds tours whose names contain any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `tour-find KEYWORD [MORE_KEYWORDS]`
 
 * Case-insensitive (e.g. `foodie` matches `Foodie`)
 * Order does not matter
 * Only names are searched
-* Matches full words only
-* Returns contacts matching at least one keyword (OR search)
+* Matches **full words only**
+* Returns tours matching at least one keyword (OR search)
 
 Examples:
-* `tour-find Foodie`
-* `tour-find City Walking`
+* `tour-find Foodie` : Finds and lists all tours whose names contain `Foodie`.
+
+* `tour-find City Walking` : Finds and lists all tours whose names contain `City` or `Walking`.
 
 ### Deleting a tour: `tour-delete`
 
@@ -270,7 +348,7 @@ Deletes a tour package from the tour list.
 Format: `tour-delete INDEX`
 
 Examples:
-* `tour-delete 1`
+* `tour-delete 1` : Deletes the first tour shown in the current tour list.
 
 ---
 
@@ -280,7 +358,7 @@ Examples:
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains
 the data of your previous Bivago home folder.
 
---------------------------------------------------------------------------------------------------------------------
+---
 
 ## Known issues
 
@@ -290,38 +368,3 @@ the data of your previous Bivago home folder.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut
    `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to
    manually restore the minimized Help Window.
-
---------------------------------------------------------------------------------------------------------------------
-
-## Command summary
-
-### Contact Management
-
-| Action       | Format, Examples                                                                                                                                                                                                             |
-|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add** | `add type/TYPE n/NAME p/PHONE e/EMAIL a/ADDRESS [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]...` <br> e.g., `add type/person n/John Doe p/98765432 e/john@example.com a/311 Clementi Ave 2 t/friend` |
-| **Delete** | `delete INDEX` <br> e.g., `delete 3`                                                                                                                                                                                         |
-| **Edit** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]...` <br> e.g., `edit 2 p/91234567 e/john_new@example.com`                                          |
-| **Find** | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find John Jane`                                                                                                                                                                   |
-| **List** | `list`                                                                                                                                                                                                                       |
-
-
-### Tour Management
-
-| Action       | Format, Examples                                                                  |
-|--------------|-----------------------------------------------------------------------------------|
-| **Add**      | `tour-add n/NAME` <br> e.g., `tour-add n/Le Royal Tour`                           |
-| **Delete**   | `tour-delete INDEX` <br> e.g., `tour-delete 2`                                    |
-| **Assign**   | `tour-assign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-assign 1 tour/2`     |
-| **Unassign** | `tour-unassign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-unassign 3 tour/5` |
-| **View**     | `tour-view INDEX` <br> e.g., `tour-view 1`                                        |
-| **Find** | `tour-find KEYWORD [MORE_KEYWORDS]` <br> e.g., `tour-find City Walking`           |
-| **List**     | `tour-list`                                                                       |
-
-
-### Miscellaneous
-
-| Action | Format, Examples |
-|--------|-----------------|
-| **Help** | `help` |
-| **Exit** | `exit` |
