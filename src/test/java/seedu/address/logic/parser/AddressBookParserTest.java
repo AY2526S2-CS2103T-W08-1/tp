@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.TOUR_NAME_DESC_JAMES;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TOUR_NAME_JAMES;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalContacts.TOUR_JAMES;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_CONTACT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TOUR;
 
@@ -96,8 +96,9 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_tourAdd() throws Exception {
-        Tour tour = new Tour(VALID_TOUR_NAME_JAMES);
-        TourAddCommand command = (TourAddCommand) parser.parseCommand(TourAddCommand.COMMAND_WORD + TOUR_NAME_DESC_JAMES);
+        Tour tour = TOUR_JAMES;
+        TourAddCommand command = (TourAddCommand) parser.parseCommand(TourAddCommand.COMMAND_WORD
+                + TOUR_NAME_DESC_JAMES);
         assertEquals(new TourAddCommand(tour), command);
     }
 

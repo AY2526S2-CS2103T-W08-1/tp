@@ -4,9 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TOUR_NAME_JAMES;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TOUR_NAME_JAMES_JR;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.testutil.TypicalContacts.TOUR_JAMES;
+import static seedu.address.testutil.TypicalContacts.TOUR_JAMES_JR;
 import static seedu.address.testutil.TypicalContacts.getTypicalAddressBook;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -32,7 +33,7 @@ public class TourAddCommandTest {
 
     @Test
     public void execute_newTour_success() {
-        Tour validTour = new Tour(VALID_TOUR_NAME_JAMES);
+        Tour validTour = TOUR_JAMES;
 
         Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
         expectedModel.addTour(validTour);
@@ -44,7 +45,7 @@ public class TourAddCommandTest {
 
     @Test
     public void execute_duplicateTour_throwsCommandException() {
-        Tour tour = new Tour(VALID_TOUR_NAME_JAMES);
+        Tour tour = TOUR_JAMES;
         model.addTour(tour);
         assertCommandFailure(new TourAddCommand(tour), model,
                 TourAddCommand.MESSAGE_DUPLICATE_TOUR);
@@ -53,8 +54,8 @@ public class TourAddCommandTest {
 
     @Test
     public void equals() {
-        Tour james = new Tour(VALID_TOUR_NAME_JAMES);
-        Tour jamesJr = new Tour(VALID_TOUR_NAME_JAMES_JR);
+        Tour james = TOUR_JAMES;
+        Tour jamesJr = TOUR_JAMES_JR;
         TourAddCommand addJamesCommand = new TourAddCommand(james);
         TourAddCommand addJamesJrCommand = new TourAddCommand(jamesJr);
 
@@ -77,7 +78,7 @@ public class TourAddCommandTest {
 
     @Test
     public void toStringMethod() {
-        TourAddCommand tourAddCommand = new TourAddCommand(new Tour(VALID_TOUR_NAME_JAMES));
+        TourAddCommand tourAddCommand = new TourAddCommand(TOUR_JAMES);
         String expected = TourAddCommand.class.getCanonicalName() + "{toAdd=" + VALID_TOUR_NAME_JAMES + "}";
         assertEquals(expected, tourAddCommand.toString());
     }

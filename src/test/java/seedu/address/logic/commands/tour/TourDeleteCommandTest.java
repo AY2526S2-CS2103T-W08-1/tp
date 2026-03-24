@@ -3,16 +3,14 @@ package seedu.address.logic.commands.tour;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TOUR_NAME_JAMES;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TOUR_NAME_JAMES_JR;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showContactAtIndex;
 import static seedu.address.logic.commands.CommandTestUtil.showTourAtIndex;
+import static seedu.address.testutil.TypicalContacts.TOUR_JAMES;
+import static seedu.address.testutil.TypicalContacts.TOUR_JAMES_JR;
 import static seedu.address.testutil.TypicalContacts.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_CONTACT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TOUR;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_CONTACT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_TOUR;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -20,11 +18,9 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.Messages;
-import seedu.address.logic.commands.contact.DeleteCommand;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.contact.Contact;
 import seedu.address.model.tour.Tour;
 
 /**
@@ -39,8 +35,8 @@ public class TourDeleteCommandTest {
     public void setUp() {
         model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
         // Add tours to the model so tour indices are valid
-        model.addTour(new Tour(VALID_TOUR_NAME_JAMES));
-        model.addTour(new Tour(VALID_TOUR_NAME_JAMES_JR));
+        model.addTour(TOUR_JAMES);
+        model.addTour(TOUR_JAMES_JR);
     }
 
     @Test

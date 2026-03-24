@@ -1,24 +1,19 @@
 package seedu.address.logic.parser;
 
-import org.junit.jupiter.api.Test;
-
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TOUR_NAME_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
-import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
 import static seedu.address.logic.commands.CommandTestUtil.TOUR_NAME_DESC_JAMES;
 import static seedu.address.logic.commands.CommandTestUtil.TOUR_NAME_DESC_JAMES_JR;
-import static seedu.address.logic.commands.CommandTestUtil.TYPE_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TOUR_NAME_JAMES;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+import static seedu.address.testutil.TypicalContacts.TOUR_JAMES;
+
+import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.tour.TourAddCommand;
@@ -29,7 +24,7 @@ public class TourAddCommandParserTest {
 
     @Test
     public void parse_validArgs_success() {
-        Tour expectedTour = new Tour(VALID_TOUR_NAME_JAMES);
+        Tour expectedTour = TOUR_JAMES;
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + TOUR_NAME_DESC_JAMES,
                 new TourAddCommand(expectedTour));
     }
@@ -57,11 +52,11 @@ public class TourAddCommandParserTest {
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
 
         // invalid then valid
-        assertParseFailure(parser,  INVALID_TOUR_NAME_DESC + validExpectedTourString,
+        assertParseFailure(parser, INVALID_TOUR_NAME_DESC + validExpectedTourString,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
 
         // valid then invalid
-        assertParseFailure(parser,  validExpectedTourString + INVALID_TOUR_NAME_DESC,
+        assertParseFailure(parser, validExpectedTourString + INVALID_TOUR_NAME_DESC,
                 Messages.getErrorMessageForDuplicatePrefixes(PREFIX_NAME));
     }
 
