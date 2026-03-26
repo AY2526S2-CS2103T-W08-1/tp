@@ -8,9 +8,21 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.contact.AddCommand;
+import seedu.address.logic.commands.contact.DeleteCommand;
+import seedu.address.logic.commands.contact.EditCommand;
+import seedu.address.logic.commands.contact.FindCommand;
+import seedu.address.logic.commands.contact.ListCommand;
+import seedu.address.logic.commands.general.ClearCommand;
+import seedu.address.logic.commands.general.ExitCommand;
+import seedu.address.logic.commands.general.HelpCommand;
+import seedu.address.logic.commands.tour.TourAddCommand;
+import seedu.address.logic.commands.tour.TourAssignCommand;
+import seedu.address.logic.commands.tour.TourDeleteCommand;
+import seedu.address.logic.commands.tour.TourListCommand;
+import seedu.address.logic.commands.tour.TourUnassignCommand;
+import seedu.address.logic.commands.tour.TourViewCommand;
 import seedu.address.logic.commands.DeleteCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
@@ -89,6 +101,15 @@ public class AddressBookParser {
 
         case TourDeleteCommand.COMMAND_WORD:
             return new TourDeleteCommandParser().parse(arguments);
+
+        case TourViewCommand.COMMAND_WORD:
+            return new TourViewCommandParser().parse(arguments);
+
+        case TourAssignCommand.COMMAND_WORD:
+            return new TourAssignCommandParser().parse(arguments);
+
+        case TourUnassignCommand.COMMAND_WORD:
+            return new TourUnassignCommandParser().parse(arguments);
 
         case TourFindCommand.COMMAND_WORD:
             return new TourFindCommandParser().parse(arguments);

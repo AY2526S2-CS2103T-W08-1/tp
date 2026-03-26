@@ -4,8 +4,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.commands.CommandTestUtil.TOUR_NAME_DESC_JAMES;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.TypicalContacts.TOUR_JAMES;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_CONTACT;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_TOUR;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,18 +17,22 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditCommand.EditContactDescriptor;
-import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
-import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.contact.AddCommand;
+import seedu.address.logic.commands.contact.DeleteCommand;
+import seedu.address.logic.commands.contact.EditCommand;
+import seedu.address.logic.commands.contact.EditCommand.EditContactDescriptor;
+import seedu.address.logic.commands.contact.FindCommand;
+import seedu.address.logic.commands.contact.ListCommand;
+import seedu.address.logic.commands.general.ClearCommand;
+import seedu.address.logic.commands.general.ExitCommand;
+import seedu.address.logic.commands.general.HelpCommand;
+import seedu.address.logic.commands.tour.TourAddCommand;
+import seedu.address.logic.commands.tour.TourDeleteCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.contact.Contact;
+import seedu.address.model.contact.ContactTypePredicate;
 import seedu.address.model.contact.NameContainsKeywordsPredicate;
+import seedu.address.model.tour.Tour;
 import seedu.address.testutil.ContactUtil;
 import seedu.address.testutil.EditContactDescriptorBuilder;
 import seedu.address.testutil.PersonBuilder;
@@ -72,8 +80,10 @@ public class AddressBookParserTest {
     public void parseCommand_find() throws Exception {
         List<String> keywords = Arrays.asList("foo", "bar", "baz");
         FindCommand command = (FindCommand) parser.parseCommand(
-                FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new NameContainsKeywordsPredicate(keywords)), command);
+                FindCommand.COMMAND_WORD + " "
+                        + PREFIX_NAME + keywords.stream().collect(Collectors.joining(" ")));
+        assertEquals(new FindCommand(ContactTypePredicate.ANY_TYPE_ALLOWED_PREDICATE,
+                new NameContainsKeywordsPredicate(keywords)), command);
     }
 
     @Test
@@ -86,6 +96,21 @@ public class AddressBookParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_tourAdd() throws Exception {
+        Tour tour = TOUR_JAMES;
+        TourAddCommand command = (TourAddCommand) parser.parseCommand(TourAddCommand.COMMAND_WORD
+                + TOUR_NAME_DESC_JAMES);
+        assertEquals(new TourAddCommand(tour), command);
+    }
+
+    @Test
+    public void parseCommand_tourDelete() throws Exception {
+        TourDeleteCommand command = (TourDeleteCommand) parser.parseCommand(TourDeleteCommand.COMMAND_WORD
+                + " " + INDEX_FIRST_TOUR.getOneBased());
+        assertEquals(new TourDeleteCommand(INDEX_FIRST_TOUR), command);
     }
 
     @Test

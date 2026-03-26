@@ -5,7 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.TourAddCommand;
+import seedu.address.logic.commands.tour.TourAddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.tour.Tour;
 
@@ -26,6 +26,8 @@ public class TourAddCommandParser implements Parser<TourAddCommand> {
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, TourAddCommand.MESSAGE_USAGE));
         }
+
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_NAME);
 
         Tour tour = ParserUtil.parseTour(argMultimap.getValue(PREFIX_NAME).get());
 
