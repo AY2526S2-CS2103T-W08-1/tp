@@ -47,6 +47,21 @@ public abstract class Contact {
         this.isFavorite = new FavoriteStatus("false");
     }
 
+    /**
+     * Constructs a {@code Contact} with specified Favorite status.
+     */
+    public Contact(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Set<Tour> tours,
+                   FavoriteStatus isFavorite) {
+        requireAllNonNull(name, phone, email, address, tags, tours, isFavorite);
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.tags.addAll(tags);
+        this.tours.addAll(tours);
+        this.isFavorite = isFavorite;
+    }
+
     public Name getName() {
         return name;
     }
@@ -174,7 +189,7 @@ public abstract class Contact {
                 .add("email", email)
                 .add("address", address)
                 .add("tags", tags)
-                .add("favorite-status", isFavorite)
+                .add("favoriteStatus", isFavorite)
                 .toString();
     }
 }

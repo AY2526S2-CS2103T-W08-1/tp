@@ -35,6 +35,16 @@ public class Fnb extends Contact {
         this.isHalal = isHalal;
     }
 
+    /**
+     * Constructs an {@code Fnb} contact with specified Halal and Favorite status.
+     * @param favoriteStatus A Favorite status.
+     */
+    public Fnb(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+               HalalStatus isHalal, Set<Tour> tours, FavoriteStatus favoriteStatus) {
+        super(name, phone, email, address, tags, tours, favoriteStatus);
+        this.isHalal = isHalal;
+    }
+
     public boolean isHalal() {
         return this.isHalal.isHalal;
     }

@@ -26,13 +26,24 @@ public class Accommodation extends Contact {
     }
 
     /**
-     * Constructs an {@code Accommodation} contact with specified Halal status.
+     * Constructs an {@code Accommodation} contact with specified number of stars.
      *
      * @param stars The number of stars of the accommodation.
      */
     public Accommodation(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
                          AccommodationStars stars, Set<Tour> tours) {
         super(name, phone, email, address, tags, tours);
+        this.stars = stars;
+    }
+
+    /**
+     * Constructs an {@code Accommodation} contact with specified Favorite status.
+     *
+     * @param isFavorite The Favorite status.
+     */
+    public Accommodation(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
+                         AccommodationStars stars, Set<Tour> tours, FavoriteStatus isFavorite) {
+        super(name, phone, email, address, tags, tours, isFavorite);
         this.stars = stars;
     }
 
