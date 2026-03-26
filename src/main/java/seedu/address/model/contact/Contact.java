@@ -29,6 +29,7 @@ public abstract class Contact {
     private final Address address;
     private final Set<Tag> tags = new HashSet<>();
     private final Set<Tour> tours = new HashSet<>();
+    private final boolean isFavorite;
 
     /**
      * Constructs a {@code Contact}.
@@ -43,6 +44,7 @@ public abstract class Contact {
         this.address = address;
         this.tags.addAll(tags);
         this.tours.addAll(tours);
+        this.isFavorite = false;
     }
 
     public Name getName() {
@@ -94,6 +96,11 @@ public abstract class Contact {
         return "Tours: " + getTours().stream()
                 .map(Tour::toString)
                 .collect(Collectors.joining(" | "));
+    }
+
+    public boolean isFavorite() {
+        return this.isFavorite;
+
     }
 
     /**
