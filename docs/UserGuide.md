@@ -35,18 +35,15 @@ management while conducting the tour as you can quickly view contact details on 
 
 ## Quick start
 
-1. Ensure you have Java `17` or above installed in your Computer.<br>
-<details>
-<summary>How to install?</summary>
-
+1. Ensure you have Java `17` or above installed in your Computer.
+<panel header="How to install?">
 **Windows users:** Follow the installation instructions
 [here](https://se-education.org/guides/tutorials/javaInstallationWindows.html).<br>
 **Mac users:** Follow the installation instructions
 [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).<br>
 **Mac users:** Follow the installation instructions
 [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).<br>
-
-</details>
+</panel><br>
 
 2. Download the latest `.jar` file from [here](https://github.com/AY2526S2-CS2103T-W08-1/tp/releases).
 
@@ -78,40 +75,6 @@ management while conducting the tour as you can quickly view contact details on 
 * `exit` : Exits the app.
 
 9. Refer to the [Features](#features) below for details of each command.
-
----
-
-## Command summary
-
-### General
-
-| Action | Format, Examples |
-|--------|-----------------|
-| **Help** | `help` |
-| **Exit** | `exit` |
-
-### Contact Management
-
-| Action       | Format, Examples                                                                                                                                                                                                             |
-|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add** | `add type/TYPE n/NAME p/PHONE e/EMAIL a/ADDRESS [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​` <br> e.g., `add type/person n/John Doe p/98765432 e/john@example.com a/311 Clementi Ave 2 t/friend` |
-| **Delete** | `delete INDEX` <br> e.g., `delete 3`                                                                                                                                                                                         |
-| **Edit** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​` <br> e.g., `edit 2 p/91234567 e/john_new@example.com`                                          |
-| **Find** | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find John Jane`                                                                                                                                                                   |
-| **List** | `list`                                                                                                                                                                                                                       |
-
-
-### Tour Management
-
-| Action       | Format, Examples                                                                  |
-|--------------|-----------------------------------------------------------------------------------|
-| **Add**      | `tour-add n/NAME` <br> e.g., `tour-add n/Le Royal Tour`                           |
-| **Delete**   | `tour-delete INDEX` <br> e.g., `tour-delete 2`                                    |
-| **Assign**   | `tour-assign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-assign 1 tour/2`     |
-| **Unassign** | `tour-unassign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-unassign 3 tour/5` |
-| **View**     | `tour-view INDEX` <br> e.g., `tour-view 1`                                        |
-| **Find** | `tour-find KEYWORD [MORE_KEYWORDS]` <br> e.g., `tour-find City Walking`           |
-| **List**     | `tour-list`                                                                       |
 
 ---
 
@@ -370,3 +333,37 @@ the data of your previous Bivago home folder.
 2. **If you minimize the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut
    `F1`) again, the original Help Window will remain minimized, and no new Help Window will appear. The remedy is to
    manually restore the minimized Help Window.
+
+---
+
+## Command summary
+
+### General
+
+| Action | Format, Examples |
+|--------|-----------------|
+| **Help** | `help` |
+| **Exit** | `exit` |
+
+### Contact Management
+
+| Action       | Format, Examples                                                                                                                                                                                                             |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add** | `add type/TYPE n/NAME p/PHONE e/EMAIL a/ADDRESS [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​` <br> e.g., `add type/person n/John Doe p/98765432 e/john@example.com a/311 Clementi Ave 2 t/friend` |
+| **Delete** | `delete INDEX` <br> e.g., `delete 3`                                                                                                                                                                                         |
+| **Edit** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​` <br> e.g., `edit 2 p/91234567 e/john_new@example.com`                                          |
+| **Find** | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find John Jane`                                                                                                                                                                   |
+| **List** | `list`                                                                                                                                                                                                                       |
+
+
+### Tour Management
+
+| Action       | Format, Examples                                                                  |
+|--------------|-----------------------------------------------------------------------------------|
+| **Add**      | `tour-add n/NAME` <br> e.g., `tour-add n/Le Royal Tour`                           |
+| **Delete**   | `tour-delete INDEX` <br> e.g., `tour-delete 2`                                    |
+| **Assign**   | `tour-assign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-assign 1 tour/2`     |
+| **Unassign** | `tour-unassign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-unassign 3 tour/5` |
+| **View**     | `tour-view INDEX` <br> e.g., `tour-view 1`                                        |
+| **Find** | `tour-find KEYWORD [MORE_KEYWORDS]` <br> e.g., `tour-find City Walking`           |
+| **List**     | `tour-list`                                                                       |
