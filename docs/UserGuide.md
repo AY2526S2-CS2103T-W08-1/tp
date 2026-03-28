@@ -36,29 +36,63 @@ management while conducting the tour as you can quickly view contact details on 
 ## Quick start
 
 1. Ensure you have `Java 17` or above installed in your Computer.<br>
-**Windows users:** Follow the installation instructions
-[here](https://se-education.org/guides/tutorials/javaInstallationWindows.html).<br>
-**Mac users:** Follow the installation instructions
-[here](https://se-education.org/guides/tutorials/javaInstallationMac.html).<br>
-**Linux users:** Follow the installation instructions
-[here](https://se-education.org/guides/tutorials/javaInstallationLinux.html).<br>
+
+<details>
+<summary><b>How?</b></summary>
+
+<ul>
+  <li><b>Windows users:</b> Follow the installation instructions 
+  <a href="https://se-education.org/guides/tutorials/javaInstallationWindows.html">here</a>.</li>
+
+  <li><b>Mac users:</b> Follow the installation instructions 
+  <a href="https://se-education.org/guides/tutorials/javaInstallationMac.html">here</a>.</li>
+
+  <li><b>Linux users:</b> Follow the installation instructions 
+  <a href="https://se-education.org/guides/tutorials/javaInstallationLinux.html">here</a>.</li>
+</ul>
+
+</details>
 
 2. Download the latest `.jar` file from [here](https://github.com/AY2526S2-CS2103T-W08-1/tp/releases).
 
+
 3. Open a command terminal.<br>
-**Windows users:** Press `Win + R`, type `cmd` and press `Enter`.<br>
-**Mac users:** Press `Cmd + Space`, type `Terminal` and press `Enter`.<br>
-**Linux users:** Open Terminal from your applications menu.<br>
+
+<details>
+<summary><b>How?</b></summary>
+
+<ul>
+  <li><b>Windows users:</b> Press <code>Win + R</code>, type <code>cmd</code> and press <code>Enter</code>.</li>
+
+  <li><b>Mac users:</b> Press <code>Cmd + Space</code>, type <code>Terminal</code> and press <code>Enter</code>.</li>
+
+  <li><b>Linux users:</b> Open Terminal from your applications menu.</li>
+</ul>
+
+</details>
 
 4. Copy the file to the folder you want to use as the _home folder_ for Bivago.<br>
-**Windows users:** Type `copy Bivago.jar FILEPATH` and press `Enter`.<br>
-**Mac/Linux users:** Type `cp Bivago.jar FILEPATH` and press `Enter`.<br>
+
+<details>
+<summary><b>How?</b></summary>
+
+<ul>
+  <li><b>Windows users:</b> <code>copy Bivago.jar FILEPATH</code></li>
+
+  <li><b>Mac/Linux users:</b> <code>cp Bivago.jar FILEPATH</code></li>
+</ul>
+
+</details>
 
 5. Type `cd FILEPATH` and press `Enter` to navigate to the folder you put the jar file in.
 
+
 6. Type `java -jar Bivago.jar` command and press `Enter` to run the application.<br>
    A window similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+
+
    ![Ui](images/Ui.png)
+
 
 7. Type a command in the command box and press `Enter` to execute it. e.g. typing `help` and pressing `Enter` will
    display the program usage instructions.<br>
@@ -158,16 +192,11 @@ A contact can have any number of tags (including 0)
 
 Available types: `person`, `fnb`, `accomm`, `attraction`
 
-**Type-specific Fields**:
-* F&B contacts: `[h/HALAL_STATUS]`
-* Attraction contacts: `[o/OPENING_HOUR] [c/CLOSING_HOUR]`
-* Accommodation contacts: `[s/STARS]`
+**Type-specific Fields & Constraints**
 
-**Field Constraints**:
-* Halal Status must be `true` or `false` (default: `false`)
-* Opening Hours must be in `HH:mm` 24-hour format (default: `08:00`)
-* Closing Hours must be in `HH:mm` 24-hour format (default: `22:00`)
-* Stars must be a single digit from `1–5` (default: `3`)
+* **F&B contacts**: `[h/HALAL_STATUS]` — must be `true` or `false` (default: `false`)
+* **Attraction contacts**: `[o/OPENING_HOUR] [c/CLOSING_HOUR]` — format `HH:mm` (default: `08:00`–`22:00`)
+* **Accommodation contacts**: `[s/STARS]` — must be `1–5` (default: `3`)
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Important:**
 Fields that are not applicable to the specified contact type will be ignored.
@@ -419,30 +448,30 @@ the data of your previous Bivago home folder.
 
 ### General
 
-| Action | Format, Examples |
-|--------|-----------------|
+| Action | Command |
+|--------|----------------|
 | **Help** | `help` |
 | **Exit** | `exit` |
 
 ### Contact Management
 
-| Action       | Format, Examples                                                                                                                                                                                                             |
-|--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Action       | Command                                                                                                                                                                                                             |
+|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Add** | `add type/TYPE n/NAME p/PHONE e/EMAIL a/ADDRESS [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​` <br> e.g., `add type/person n/John Doe p/98765432 e/john@example.com a/311 Clementi Ave 2 t/friend` |
-| **Delete** | `delete INDEX` <br> e.g., `delete 3`                                                                                                                                                                                         |
-| **Edit** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​` <br> e.g., `edit 2 p/91234567 e/john_new@example.com`                                          |
-| **Find** | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find John Jane`                                                                                                                                                                   |
-| **List** | `list`                                                                                                                                                                                                                       |
+| **Delete** | `delete INDEX` <br> e.g., `delete 3`                                                                                                                                                                                        |
+| **Edit** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​` <br> e.g., `edit 2 p/91234567 e/john_new@example.com`                                         |
+| **Find** | `find KEYWORD [MORE_KEYWORDS]` <br> e.g., `find John Jane`                                                                                                                                                                  |
+| **List** | `list`                                                                                                                                                                                                                      |
 
 
 ### Tour Management
 
-| Action       | Format, Examples                                                                  |
-|--------------|-----------------------------------------------------------------------------------|
-| **Add**      | `tour-add n/NAME` <br> e.g., `tour-add n/Le Royal Tour`                           |
-| **Delete**   | `tour-delete INDEX` <br> e.g., `tour-delete 2`                                    |
-| **Assign**   | `tour-assign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-assign 1 tour/2`     |
+| Action       | Command                                                                |
+|--------------|----------------------------------------------------------------------------------|
+| **Add**      | `tour-add n/NAME` <br> e.g., `tour-add n/Le Royal Tour`                          |
+| **Delete**   | `tour-delete INDEX` <br> e.g., `tour-delete 2`                                   |
+| **Assign**   | `tour-assign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-assign 1 tour/2`    |
 | **Unassign** | `tour-unassign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-unassign 3 tour/5` |
-| **View**     | `tour-view INDEX` <br> e.g., `tour-view 1`                                        |
-| **Find** | `tour-find KEYWORD [MORE_KEYWORDS]` <br> e.g., `tour-find City Walking`           |
-| **List**     | `tour-list`                                                                       |
+| **View**     | `tour-view INDEX` <br> e.g., `tour-view 1`                                       |
+| **Find** | `tour-find KEYWORD [MORE_KEYWORDS]` <br> e.g., `tour-find City Walking`          |
+| **List**     | `tour-list`                                                                      |
