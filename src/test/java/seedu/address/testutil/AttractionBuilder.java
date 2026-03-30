@@ -1,14 +1,12 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.commands.CommandTestUtil.VALID_CLOSING_HOUR_DEFAULT_ATTRACTION;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_OPENING_HOUR_DEFAULT_ATTRACTION;
+
 import seedu.address.model.contact.Attraction;
 import seedu.address.model.contact.ClosingHour;
 import seedu.address.model.contact.Contact;
-import seedu.address.model.contact.HalalStatus;
 import seedu.address.model.contact.OpeningHour;
-
-import static seedu.address.logic.commands.CommandTestUtil.VALID_CLOSING_HOUR_DEFAULT_ATTRACTION;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_HALAL_STATUS_FALSE_FNB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_OPENING_HOUR_DEFAULT_ATTRACTION;
 
 /**
  * A utility class to help with building Person objects.

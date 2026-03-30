@@ -1,12 +1,10 @@
 package seedu.address.testutil;
 
+import static seedu.address.logic.commands.CommandTestUtil.VALID_STARS_DEFAULT_ACCOMMODATION;
+
 import seedu.address.model.contact.Accommodation;
 import seedu.address.model.contact.AccommodationStars;
-import seedu.address.model.contact.ClosingHour;
 import seedu.address.model.contact.Contact;
-import seedu.address.model.contact.OpeningHour;
-
-import static seedu.address.logic.commands.CommandTestUtil.VALID_STARS_DEFAULT_ACCOMMODATION;
 
 /**
  * A utility class to help with building Accommodation objects.

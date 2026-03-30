@@ -63,7 +63,8 @@ public class FnbTest {
         assertFalse(AL_AZHAR.isSameContact(editedFnb));
 
         // name differs in case, all other attributes same -> returns false
-        editedFnb = (Fnb) ContactBuilder.fromContact(AL_AZHAR).withName(AL_AZHAR.getName().fullName.toLowerCase()).build();
+        editedFnb = (Fnb) ContactBuilder.fromContact(AL_AZHAR).withName(
+                AL_AZHAR.getName().fullName.toLowerCase()).build();
         assertFalse(AL_AZHAR.isSameContact(editedFnb));
 
         // name has trailing spaces, all other attributes same -> returns false

@@ -1,17 +1,10 @@
 package seedu.address.testutil;
 
-import seedu.address.model.contact.Address;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_HALAL_STATUS_FALSE_FNB;
+
 import seedu.address.model.contact.Contact;
-import seedu.address.model.contact.Email;
-import seedu.address.model.contact.FavoriteStatus;
 import seedu.address.model.contact.Fnb;
 import seedu.address.model.contact.HalalStatus;
-import seedu.address.model.contact.Name;
-import seedu.address.model.contact.Phone;
-
-import java.util.HashSet;
-
-import static seedu.address.logic.commands.CommandTestUtil.VALID_HALAL_STATUS_FALSE_FNB;
 
 /**
  * A utility class to help with building Fnb objects.
