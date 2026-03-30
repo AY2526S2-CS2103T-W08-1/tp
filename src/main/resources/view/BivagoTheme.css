@@ -94,7 +94,7 @@
 /* ---- List & Cards ---- */
 .list-view {
     -fx-background-insets: 0;
-    -fx-padding: 8;
+    -fx-padding: 10 10 10 10;
     -fx-background-color: transparent;
 }
 
@@ -182,7 +182,7 @@
 .result-display {
     -fx-background-color: transparent;
     -fx-font-family: "Segoe UI";
-    -fx-font-size: 11pt;
+    -fx-font-size: 10pt;
     -fx-text-fill: #374151;
 }
 
@@ -229,6 +229,24 @@
 
 .menu .left-container {
     -fx-background-color: #1E40AF;
+}
+
+.menu-item {
+    -fx-background-color: #1E3A8A;
+}
+
+.menu-item .label {
+    -fx-text-fill: #DBEAFE;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 11pt;
+}
+
+.menu-item:focused {
+    -fx-background-color: #1D4ED8;
+}
+
+.menu-item:focused .label {
+    -fx-text-fill: #FFFFFF;
 }
 
 /* ---- Buttons ---- */

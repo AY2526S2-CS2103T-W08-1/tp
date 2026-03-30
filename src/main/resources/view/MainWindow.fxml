@@ -32,29 +32,23 @@
 
         <StackPane VBox.vgrow="NEVER" fx:id="commandBoxPlaceholder" styleClass="pane-with-border">
           <padding>
-            <Insets top="5" right="10" bottom="5" left="10" />
+            <Insets top="10" right="16" bottom="10" left="16" />
           </padding>
         </StackPane>
 
         <StackPane VBox.vgrow="NEVER" fx:id="resultDisplayPlaceholder" styleClass="pane-with-border"
-                   minHeight="100" prefHeight="100" maxHeight="100">
+                   minHeight="80" prefHeight="80" maxHeight="80">
           <padding>
-            <Insets top="5" right="10" bottom="5" left="10" />
+            <Insets top="8" right="16" bottom="8" left="16" />
           </padding>
         </StackPane>
 
-        <SplitPane VBox.vgrow="ALWAYS" dividerPositions="0.7">
-          <VBox fx:id="contactList" styleClass="pane-with-border" minWidth="340">
-            <padding>
-              <Insets top="10" right="10" bottom="10" left="10" />
-            </padding>
+        <SplitPane VBox.vgrow="ALWAYS" dividerPositions="0.65">
+          <VBox fx:id="contactList" styleClass="pane-with-border" minWidth="320">
             <StackPane fx:id="contactListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
 
-          <VBox fx:id="tourList" styleClass="pane-with-border" minWidth="340">
-            <padding>
-              <Insets top="10" right="10" bottom="10" left="10" />
-            </padding>
+          <VBox fx:id="tourList" styleClass="pane-with-border" minWidth="280">
             <StackPane fx:id="tourListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
           </VBox>
         </SplitPane>
