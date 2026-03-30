@@ -37,4 +37,14 @@ public class FavoriteAddCommandParserTest {
     public void parse_emptyArgs_failure() {
         assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);
     }
+
+    @Test
+    public void parse_zeroIndex_failure() {
+        assertParseFailure(parser, "0", MESSAGE_INVALID_FORMAT);
+    }
+
+    @Test
+    public void parse_negativeIndex_failure() {
+        assertParseFailure(parser, "-1", MESSAGE_INVALID_FORMAT);
+    }
 }

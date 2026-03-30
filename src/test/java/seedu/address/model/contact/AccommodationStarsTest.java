@@ -58,6 +58,7 @@ public class AccommodationStarsTest {
 
     @Test
     public void starsFromString_invalidInput_throwsIllegalArgumentException() {
+        assertThrows(IllegalArgumentException.class, () -> Stars.fromString(null));
         assertThrows(IllegalArgumentException.class, () -> Stars.fromString("0"));
         assertThrows(IllegalArgumentException.class, () -> Stars.fromString("6"));
         assertThrows(IllegalArgumentException.class, () -> Stars.fromString("abc"));
