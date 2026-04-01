@@ -9,7 +9,7 @@ public class FavoriteStatus {
     // This message constraint should not be triggered as favorite status is to be edited via commands alone and
     // not by user input.
     public static final String MESSAGE_CONSTRAINTS =
-            "Favorite Status should only be 'true' or 'false (default if unspecified)'.";
+            "Favorite Status should only be 'true' or 'false' ('false' if unspecified).";
 
     /*
      * The string must be 'true' or 'false' (case-insensitive).

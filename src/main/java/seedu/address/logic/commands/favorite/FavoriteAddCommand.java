@@ -35,7 +35,7 @@ public class FavoriteAddCommand extends Command {
     private final Index contactIndex;
 
     /**
-     * Creates an FavoriteAddCommand to add the contact at {@code contactIndex} to favorites.
+     * Creates a FavoriteAddCommand to add the contact at {@code contactIndex} to favorites.
      */
     public FavoriteAddCommand(Index contactIndex) {
         requireNonNull(contactIndex);

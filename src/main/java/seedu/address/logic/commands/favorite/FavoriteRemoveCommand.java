@@ -35,7 +35,7 @@ public class FavoriteRemoveCommand extends Command {
     private final Index contactIndex;
 
     /**
-     * Creates an FavoriteRemoveCommand to remove the contact at {@code contactIndex} from favorites.
+     * Creates a FavoriteRemoveCommand to remove the contact at {@code contactIndex} from favorites.
      */
     public FavoriteRemoveCommand(Index contactIndex) {
         requireNonNull(contactIndex);
