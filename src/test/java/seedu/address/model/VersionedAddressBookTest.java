@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.TypicalContacts.getTypicalAddressBook;
 
@@ -121,5 +122,33 @@ public class VersionedAddressBookTest {
         versionedAddressBook.redo();
         versionedAddressBook.redo();
         assertEquals(stateAfterSecondCommit, versionedAddressBook);
+    }
+
+    @Test
+    public void undo_noStates_throwsAssertionError() {
+        assertThrows(AssertionError.class, () -> versionedAddressBook.undo());
+    }
+
+    @Test
+    public void redo_noUndo_throwsAssertionError() {
+        versionedAddressBook.commit(); // move forward once
+        assertThrows(AssertionError.class, () -> versionedAddressBook.redo());
+    }
+
+    @Test
+    public void redo_atLatestState_throwsAssertionError() {
+        versionedAddressBook.commit();
+        versionedAddressBook.undo();
+        versionedAddressBook.redo(); // now at latest again
+
+        assertThrows(AssertionError.class, () -> versionedAddressBook.redo());
+    }
+
+    @Test
+    public void undo_pastInitialState_throwsAssertionError() {
+        versionedAddressBook.commit();
+        versionedAddressBook.undo(); // back to initial
+
+        assertThrows(AssertionError.class, () -> versionedAddressBook.undo());
     }
 }
