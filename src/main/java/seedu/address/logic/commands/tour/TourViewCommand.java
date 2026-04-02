@@ -29,6 +29,11 @@ public class TourViewCommand extends Command {
 
     private final Index targetIndex;
 
+    /**
+     * Creates a TourViewCommand to list all contacts assigned to the tour at {@code targetIndex}.
+     *
+     * @param targetIndex Index of the tour in the displayed tour list.
+     */
     public TourViewCommand(Index targetIndex) {
         requireNonNull(targetIndex);
         this.targetIndex = targetIndex;
