@@ -164,20 +164,20 @@ public class CommandTestUtil {
         DESC_FNB = new EditContactDescriptorBuilder().withName(VALID_NAME_FNB)
                 .withPhone(VALID_PHONE_FNB).withEmail(VALID_EMAIL_FNB).withAddress(VALID_ADDRESS_FNB)
                 .withTags(VALID_TAG_INDIAN).withHalalStatus(VALID_HALAL_STATUS_TRUE_FNB)
-                .withFavoriteStatus(VALID_FAVORITE_STATUS_TRUE).build();
+                .withFavouriteStatus(VALID_FAVORITE_STATUS_TRUE).build();
 
         DESC_ATTRACTION = new EditContactDescriptorBuilder().withName(VALID_NAME_ATTRACTION)
                 .withPhone(VALID_PHONE_ATTRACTION).withEmail(VALID_EMAIL_ATTRACTION)
                 .withAddress(VALID_ADDRESS_ATTRACTION).withTags(VALID_TAG_FUN)
                 .withOpeningHour(VALID_OPENING_HOUR_ATTRACTION)
                 .withClosingHour(VALID_CLOSING_HOUR_ATTRACTION)
-                .withFavoriteStatus(VALID_FAVORITE_STATUS_FALSE).build();
+                .withFavouriteStatus(VALID_FAVORITE_STATUS_FALSE).build();
 
         DESC_ACCOMMODATION = new EditContactDescriptorBuilder().withName(VALID_NAME_ACCOMMODATION)
                 .withPhone(VALID_PHONE_ACCOMMODATION).withEmail(VALID_EMAIL_ACCOMMODATION)
                 .withAddress(VALID_ADDRESS_ACCOMMODATION).withTags(VALID_TAG_STAY)
                 .withStars(VALID_STARS_ACCOMMODATION)
-                .withFavoriteStatus(VALID_FAVORITE_STATUS_TRUE).build();
+                .withFavouriteStatus(VALID_FAVORITE_STATUS_TRUE).build();
     }
 
     /**

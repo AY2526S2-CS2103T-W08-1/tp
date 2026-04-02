@@ -25,7 +25,7 @@ import seedu.address.model.contact.Attraction;
 import seedu.address.model.contact.ClosingHour;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.Email;
-import seedu.address.model.contact.FavoriteStatus;
+import seedu.address.model.contact.FavouriteStatus;
 import seedu.address.model.contact.Fnb;
 import seedu.address.model.contact.HalalStatus;
 import seedu.address.model.contact.Name;
@@ -69,7 +69,7 @@ public class JsonAdaptedContactTest {
     }
 
     @Test
-    public void toModelType_validFavoriteStatus_returnsContact() throws Exception {
+    public void toModelType_validFavouriteStatus_returnsContact() throws Exception {
         JsonAdaptedContact contact = new JsonAdaptedContact(VALID_TYPE_PERSON, VALID_NAME_PERSON, VALID_PHONE_PERSON,
                 VALID_EMAIL_PERSON, VALID_ADDRESS_PERSON, VALID_TAGS_PERSON, EMPTY_TOUR,
                 NULL_PARAMETER, NULL_PARAMETER, NULL_PARAMETER, NULL_PARAMETER, VALID_FAVORITE_STATUS_FALSE);
@@ -77,7 +77,7 @@ public class JsonAdaptedContactTest {
     }
 
     @Test
-    public void toModelType_nullFavoriteStatus_returnsContact() throws Exception {
+    public void toModelType_nullFavouriteStatus_returnsContact() throws Exception {
         JsonAdaptedContact contact = new JsonAdaptedContact(VALID_TYPE_PERSON, VALID_NAME_PERSON, VALID_PHONE_PERSON,
                 VALID_EMAIL_PERSON, VALID_ADDRESS_PERSON, VALID_TAGS_PERSON, EMPTY_TOUR,
                 NULL_PARAMETER, NULL_PARAMETER, NULL_PARAMETER, NULL_PARAMETER, null);
@@ -183,12 +183,12 @@ public class JsonAdaptedContactTest {
     }
 
     @Test
-    public void toModelType_invalidFavoriteStatus_throwsIllegalValueException() {
+    public void toModelType_invalidFavouriteStatus_throwsIllegalValueException() {
         JsonAdaptedContact contact = new JsonAdaptedContact(VALID_TYPE_PERSON, VALID_NAME_PERSON, VALID_PHONE_PERSON,
                 VALID_EMAIL_PERSON,
                 VALID_EMAIL_PERSON, VALID_TAGS_PERSON, EMPTY_TOUR,
                 NULL_PARAMETER, NULL_PARAMETER, NULL_PARAMETER, NULL_PARAMETER, INVALID_FAVORITE_STATUS);
-        String expectedMessage = FavoriteStatus.MESSAGE_CONSTRAINTS;
+        String expectedMessage = FavouriteStatus.MESSAGE_CONSTRAINTS;
         assertThrows(IllegalValueException.class, expectedMessage, contact::toModelType);
     }
 

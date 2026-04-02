@@ -67,8 +67,8 @@ public class EditContactDescriptorTest {
                 .build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
-        // different favorite status -> returns false
-        editedAmy = new EditContactDescriptorBuilder(DESC_AMY).withFavoriteStatus(VALID_FAVORITE_STATUS_TRUE).build();
+        // different favourite status -> returns false
+        editedAmy = new EditContactDescriptorBuilder(DESC_AMY).withFavouriteStatus(VALID_FAVORITE_STATUS_TRUE).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different halal status -> returns false
@@ -105,8 +105,8 @@ public class EditContactDescriptorTest {
                 + editContactDescriptor.getOpeningHour().orElse(null) + ", closingHour="
                 + editContactDescriptor.getClosingHour().orElse(null) + ", stars="
                 + editContactDescriptor.getStars().orElse(null) + ", tours="
-                + editContactDescriptor.getTours().orElse(null) + ", favoriteStatus="
-                + editContactDescriptor.getFavoriteStatus().orElse(null) + "}";
+                + editContactDescriptor.getTours().orElse(null) + ", favouriteStatus="
+                + editContactDescriptor.getFavouriteStatus().orElse(null) + "}";
         assertEquals(expected, editContactDescriptor.toString());
     }
 }
