@@ -85,6 +85,12 @@
     -fx-padding: 0 1 0 1;
 }
 
+.split-pane:vertical .split-pane-divider {
+    -fx-background-color: #93C5FD;
+    -fx-border-color: transparent;
+    -fx-padding: 2 0 2 0;
+}
+
 .split-pane {
     -fx-border-radius: 0;
     -fx-border-width: 0;
@@ -421,6 +427,18 @@
     -fx-padding: 12 16 8 16;
 }
 
+/* ---- Panel Headers (Contacts / Tours) ---- */
+.panel-header {
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-font-size: 11pt;
+    -fx-text-fill: #2563EB;
+    -fx-padding: 10 16 10 16;
+    -fx-background-color: #EFF6FF;
+    -fx-max-width: Infinity;
+    -fx-border-color: #BFDBFE;
+    -fx-border-width: 0 0 1 0;
+}
+
 .section-subtitle {
     -fx-font-family: "Segoe UI";
     -fx-font-size: 10pt;
@@ -438,6 +456,6 @@
 /* ---- Result Area ---- */
 .result-area {
     -fx-background-color: #F8FAFF;
-    -fx-border-color: #BFDBFE;
-    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #93C5FD;
+    -fx-border-width: 0 0 2 0;
 }

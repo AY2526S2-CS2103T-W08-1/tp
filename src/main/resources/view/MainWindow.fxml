@@ -2,15 +2,16 @@
 
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.Scene?>
 <?import javafx.stage.Stage?>
-<?import javafx.scene.control.SplitPane?>
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
          title="Bivago" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
   <icons>
@@ -40,10 +41,12 @@
 
           <SplitPane dividerPositions="0.65">
             <VBox fx:id="contactList" styleClass="pane-with-border" minWidth="320">
+              <Label text="Contacts" styleClass="panel-header" />
               <StackPane fx:id="contactListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
             </VBox>
 
             <VBox fx:id="tourList" styleClass="pane-with-border" minWidth="280">
+              <Label text="Tours" styleClass="panel-header" />
               <StackPane fx:id="tourListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
             </VBox>
           </SplitPane>
