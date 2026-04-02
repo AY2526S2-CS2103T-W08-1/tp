@@ -16,7 +16,7 @@ Class Email
 Class Name
 Class Phone
 Class Tag
-Class FavoriteStatus
+Class FavouriteStatus
 Class HalalStatus
 Class OpeningHour
 Class ClosingHour
@@ -39,7 +39,7 @@ Contact *--> Phone
 Contact *--> Email
 Contact *--> Address
 Contact *--> "*" Tag
-Contact *--> FavoriteStatus
+Contact *--> FavouriteStatus
 Person .up.|> Contact
 Fnb .up.|> Contact
 Attraction .up.|> Contact
@@ -53,7 +53,7 @@ Name -[hidden]right-> Phone
 Phone -[hidden]right-> Email
 Email -[hidden]right-> Address
 Address -[hidden]right-> Tag
-Tag -[hidden]right-> FavoriteStatus
+Tag -[hidden]right-> FavouriteStatus
 Person -[hidden]up-> Phone
 Fnb -[hidden]left-> Person
 Attraction -[hidden]left-> Fnb
