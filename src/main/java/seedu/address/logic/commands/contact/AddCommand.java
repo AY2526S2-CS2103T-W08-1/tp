@@ -40,7 +40,7 @@ public class AddCommand extends Command {
             + "[" + PREFIX_HALAL_STATUS + "HALAL STATUS (for FnB contacts)]... "
             + "[" + PREFIX_OPENING_HOUR + "OPENING HOUR (for Attraction contacts)] \n"
             + "[" + PREFIX_CLOSING_HOUR + "CLOSING HOUR (for Attraction contacts)] "
-            + "[" + PREFIX_STARS + "STARS (for for Accommodations)] "
+            + "[" + PREFIX_STARS + "STARS (for Accommodations)] "
             + "[" + PREFIX_TAG + "TAG]... \n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_TYPE + "person "
@@ -76,6 +76,7 @@ public class AddCommand extends Command {
         }
 
         model.addContact(contactToAdd);
+        model.commitAddressBook();
 
         assert model.hasContact(contactToAdd) : "Contact should have been added";
         logger.fine(String.format("Added contact: %s", contactToAdd));

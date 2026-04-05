@@ -55,6 +55,7 @@ public class FavouriteAddCommand extends Command {
         Contact contactToEdit = getContactToEdit(model);
         Contact editedContact = getEditedContact(contactToEdit);
         model.setContact(contactToEdit, editedContact);
+        model.commitAddressBook();
         logger.fine(String.format("Added contact to favourites: %s", editedContact));
         model.updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
         return new CommandResult(String.format(MESSAGE_ADD_FAVOURITE_SUCCESS, Messages.format(editedContact)));

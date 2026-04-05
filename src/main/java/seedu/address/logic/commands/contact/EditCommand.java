@@ -61,7 +61,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_HALAL_STATUS + "HALAL STATUS (for FnB contacts)]... "
             + "[" + PREFIX_OPENING_HOUR + "OPENING HOUR (for Attraction contacts)] \n"
             + "[" + PREFIX_CLOSING_HOUR + "CLOSING HOUR (for Attraction contacts)] "
-            + "[" + PREFIX_STARS + "STARS (for for Accommodations)] "
+            + "[" + PREFIX_STARS + "STARS (for Accommodations)] "
             + "[" + PREFIX_TAG + "TAG]... \n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
@@ -96,6 +96,7 @@ public class EditCommand extends Command {
         Contact editedContact = getEditedContact(contactToEdit, model);
 
         model.setContact(contactToEdit, editedContact);
+        model.commitAddressBook();
         assert contactToEdit != editedContact : "Original contact must have been edited";
         logger.fine(String.format("Edited contact from %s to %s", contactToEdit, editedContact));
 
