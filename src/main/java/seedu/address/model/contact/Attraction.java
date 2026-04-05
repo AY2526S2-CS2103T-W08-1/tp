@@ -4,6 +4,7 @@ import static seedu.address.logic.parser.CliSyntax.TYPE_ATTRACTION;
 
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import seedu.address.logic.commands.contact.EditCommand;
@@ -61,14 +62,14 @@ public class Attraction extends Contact {
     }
 
     /**
-     * Constructs an {@code Attraction} contact with specified operating hours and Favorite Status.
+     * Constructs an {@code Attraction} contact with specified operating hours and Favourite Status.
      * @param openingHour The opening hours of the attraction.
      * @param closingHour The closing hours of the attraction.
-     * @param isFavorite The Favorite Status.
+     * @param isFavourite The Favourite Status.
      */
     public Attraction(Name name, Phone phone, Email email, Address address, Set<Tag> tags,
-                      OpeningHour openingHour, ClosingHour closingHour, Set<Tour> tours, FavoriteStatus isFavorite) {
-        super(name, phone, email, address, tags, tours, isFavorite);
+                      OpeningHour openingHour, ClosingHour closingHour, Set<Tour> tours, FavouriteStatus isFavourite) {
+        super(name, phone, email, address, tags, tours, isFavourite);
         this.openingHour = openingHour;
         this.closingHour = closingHour;
     }
@@ -94,6 +95,28 @@ public class Attraction extends Contact {
     }
 
     /**
+     * Returns true if both contacts have the same identity and data fields.
+     * This defines a stronger notion of equality between two contacts.
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof Attraction otherAttraction)) {
+            return false;
+        }
+        return super.equals(otherAttraction)
+                && openingHour.equals(otherAttraction.openingHour)
+                && closingHour.equals(otherAttraction.closingHour);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), openingHour, closingHour);
+    }
+
+    /**
      * Returns a copy of the contact with its values edited.
      */
     @Override
@@ -106,10 +129,11 @@ public class Attraction extends Contact {
         OpeningHour updatedOpeningHour = editAttractionDescriptor.getOpeningHour().orElse(getOpeningHour());
         ClosingHour updatedClosingHour = editAttractionDescriptor.getClosingHour().orElse(getClosingHour());
         Set<Tour> updatedTours = editAttractionDescriptor.getTours().orElse(getTours());
-        FavoriteStatus updatedFavoriteStatus = editAttractionDescriptor.getFavoriteStatus().orElse(getFavoriteStatus());
+        FavouriteStatus updatedFavouriteStatus = editAttractionDescriptor
+                .getFavouriteStatus().orElse(getFavouriteStatus());
 
         return new Attraction(updatedName, updatedPhone, updatedEmail, updatedAddress, updatedTags,
-                updatedOpeningHour, updatedClosingHour, updatedTours, updatedFavoriteStatus);
+                updatedOpeningHour, updatedClosingHour, updatedTours, updatedFavouriteStatus);
     }
 
     @Override

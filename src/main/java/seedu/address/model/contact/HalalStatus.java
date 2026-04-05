@@ -7,7 +7,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  */
 public class HalalStatus {
     public static final String MESSAGE_CONSTRAINTS =
-            "Halal Status should only be 'true' or 'false (default if unspecified)'.";
+            "Halal Status should only be 'true' or 'false' ('false' if unspecified).";
 
     /*
      * The string must be 'true' or 'false' (case-insensitive).
@@ -23,7 +23,7 @@ public class HalalStatus {
      */
     public HalalStatus(String isHalal) {
         checkArgument(isValidHalalStatus(isHalal), MESSAGE_CONSTRAINTS);
-        this.isHalal = isHalal.equals("true");
+        this.isHalal = isHalal.equals("true") || isHalal.equals("TRUE");
     }
 
     /**

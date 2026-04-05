@@ -54,6 +54,7 @@ public class TourUnassignCommand extends Command {
         validateIsAssigned(contact, tour);
         Contact updatedContact = buildContactWithTourRemoved(contact, tour);
         model.setContact(contact, updatedContact);
+        model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_UNASSIGN_TOUR_SUCCESS, Messages.format(updatedContact)));
     }
 

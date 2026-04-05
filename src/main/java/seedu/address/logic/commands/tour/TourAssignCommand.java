@@ -53,6 +53,7 @@ public class TourAssignCommand extends Command {
         validateNotAssigned(contact, tour);
         Contact updatedContact = buildContactWithTourAdded(contact, tour);
         model.setContact(contact, updatedContact);
+        model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_ASSIGN_TOUR_SUCCESS, Messages.format(updatedContact)));
     }
 

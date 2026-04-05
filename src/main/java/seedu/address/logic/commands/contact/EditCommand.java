@@ -32,7 +32,7 @@ import seedu.address.model.contact.Address;
 import seedu.address.model.contact.ClosingHour;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.Email;
-import seedu.address.model.contact.FavoriteStatus;
+import seedu.address.model.contact.FavouriteStatus;
 import seedu.address.model.contact.HalalStatus;
 import seedu.address.model.contact.Name;
 import seedu.address.model.contact.OpeningHour;
@@ -59,7 +59,7 @@ public class EditCommand extends Command {
             + "[" + PREFIX_HALAL_STATUS + "HALAL STATUS (for FnB contacts)]... "
             + "[" + PREFIX_OPENING_HOUR + "OPENING HOUR (for Attraction contacts)] \n"
             + "[" + PREFIX_CLOSING_HOUR + "CLOSING HOUR (for Attraction contacts)] "
-            + "[" + PREFIX_STARS + "STARS (for for Accommodations)] "
+            + "[" + PREFIX_STARS + "STARS (for Accommodations)] "
             + "[" + PREFIX_TAG + "TAG]... \n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
@@ -102,6 +102,7 @@ public class EditCommand extends Command {
 
         model.setContact(contactToEdit, editedContact);
         model.updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
+        model.commitAddressBook();
         return new CommandResult(String.format(MESSAGE_EDIT_CONTACT_SUCCESS, Messages.format(editedContact)));
     }
 
@@ -154,7 +155,7 @@ public class EditCommand extends Command {
         private ClosingHour closingHour;
         private AccommodationStars stars;
         private Set<Tour> tours;
-        private FavoriteStatus isFavorite;
+        private FavouriteStatus isFavourite;
 
 
         public EditContactDescriptor() {}
@@ -170,7 +171,7 @@ public class EditCommand extends Command {
             setAddress(toCopy.address);
             setTags(toCopy.tags);
             setTours(toCopy.tours);
-            setFavorite(toCopy.isFavorite);
+            setFavourite(toCopy.isFavourite);
             setHalal(toCopy.isHalal);
             setOpeningHour(toCopy.openingHour);
             setClosingHour(toCopy.closingHour);
@@ -181,7 +182,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags, tours, isFavorite,
+            return CollectionUtil.isAnyNonNull(name, phone, email, address, tags, tours, isFavourite,
                     isHalal, openingHour, closingHour, stars);
         }
 
@@ -242,12 +243,12 @@ public class EditCommand extends Command {
             this.isHalal = isHalal;
         }
 
-        public Optional<FavoriteStatus> getFavoriteStatus() {
-            return Optional.ofNullable(this.isFavorite);
+        public Optional<FavouriteStatus> getFavouriteStatus() {
+            return Optional.ofNullable(this.isFavourite);
         }
 
-        public void setFavorite(FavoriteStatus isFavorite) {
-            this.isFavorite = isFavorite;
+        public void setFavourite(FavouriteStatus isFavourite) {
+            this.isFavourite = isFavourite;
         }
 
         public Optional<OpeningHour> getOpeningHour() {
@@ -315,7 +316,7 @@ public class EditCommand extends Command {
                     && Objects.equals(address, otherEditContactDescriptor.address)
                     && Objects.equals(tags, otherEditContactDescriptor.tags)
                     && Objects.equals(tours, otherEditContactDescriptor.tours)
-                    && Objects.equals(isFavorite, otherEditContactDescriptor.isFavorite)
+                    && Objects.equals(isFavourite, otherEditContactDescriptor.isFavourite)
                     && Objects.equals(isHalal, otherEditContactDescriptor.isHalal)
                     && Objects.equals(openingHour, otherEditContactDescriptor.openingHour)
                     && Objects.equals(closingHour, otherEditContactDescriptor.closingHour)
@@ -335,7 +336,7 @@ public class EditCommand extends Command {
                     .add("closingHour", closingHour)
                     .add("stars", stars)
                     .add("tours", tours)
-                    .add("favoriteStatus", isFavorite)
+                    .add("favouriteStatus", isFavourite)
                     .toString();
         }
     }
