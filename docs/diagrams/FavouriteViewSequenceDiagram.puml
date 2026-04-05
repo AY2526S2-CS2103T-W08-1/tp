@@ -1,0 +1,20 @@
+@startuml
+actor User
+participant "LogicManager" as Logic
+participant "FavouriteViewCommandParser" as Parser
+participant "FavouriteViewCommand" as Command
+participant "Model" as Model
+participant "ContactIsFavoritePredicate" as Predicate
+
+User -> Logic : execute("favourite-view")
+Logic -> Parser : parse("favourite-view")
+Parser --> Logic : FavouriteViewCommand
+
+Logic -> Command : execute(model)
+Command -> Predicate : create predicate for favourites
+Command -> Model : updateFilteredContactList(predicate)
+Model --> Command : filtered list based on predicate
+Command --> Logic : CommandResult
+Logic --> User : display only favourite contacts
+@enduml
+
