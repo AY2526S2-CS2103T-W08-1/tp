@@ -3,7 +3,6 @@ package seedu.address.logic.commands.favourite;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
 import static seedu.address.model.contact.FavouriteStatus.VALID_FAVOURITE_STATUS_FALSE;
-import static seedu.address.model.contact.FavouriteStatus.VALID_FAVOURITE_STATUS_TRUE;
 
 import java.util.List;
 import java.util.logging.Logger;

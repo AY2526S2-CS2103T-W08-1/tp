@@ -2,6 +2,8 @@ package seedu.address.logic.commands.favourite;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.logging.Logger;
+
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -10,7 +12,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 import seedu.address.model.contact.ContactIsFavouritePredicate;
 
-import java.util.logging.Logger;
+
 
 /**
  * Lists all contacts in the address book in favourites to the user.
