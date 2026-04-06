@@ -10,7 +10,7 @@ title: Developer Guide
 ## **Acknowledgements**
 
 * {list here sources of all reused/adapted ideas, code, documentation, and third-party libraries -- include links to the original source as well}
-* William: Usage of AI Tools (Open AI) to help in extending tests to support different contact types and favorite contacts,
+* William: Usage of AI Tools (Open AI) to help in extending tests to support different contact types and favourite contacts,
 subsequently verified. Namely in:
 `FavouriteStatusTest.java`, `HalalStatusTest.java`,
 `OpeningHourTest.java`, `ClosingHourTest.java`,
@@ -20,6 +20,7 @@ subsequently verified. Namely in:
 `FavouriteRemoveCommandTest.java`, `FavouriteViewCommandTest.java`,
 `FavouriteAddCommandParserTest.java`, `FavouriteRemoveCommandParserTest.java`
 * William: Usage of AI Tools as an extra layer of checks for bugs and typos.
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
@@ -165,6 +166,46 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 
 This section describes some noteworthy details on how certain features are implemented.
 
+### Multiple Contact Types
+
+Bivago's content management currently supports four main types of contacts, represented by the `Person`, `Fnb`,
+`Attraction`, and `Accommodation` classes. An abstract class `Contact` serves as the parent of these classes. `Person`
+serves as the most basic contact type that preserves the same structure as in the AB3 implementation. Classes
+`HalalStatus`, `OpeningHour`, `ClosingHour`, and `AccommodationStars` serve as wrapper classes (similar to `Name`,
+`Address`, `Phone`, etc.) for the type-specific fields of each type of contact.
+
+<img src="images/ContactClassDiagram.png" width="600" />
+
+The code in the `Logic` component is updated to reflect the additional fields of the different contact types.
+`EditContactDescriptor`, a nested class within `EditCommand` that is used to make changes to contacts, has been
+extended to include these additional fields.
+
+<img src="images/EditContactDescriptorClassDiagram.png" width="600" />
+
+### Contact Favourites
+
+Bivago also supports marking certain contacts as favourites, which is useful for managing important, commonly used,
+or otherwise notable contacts. This is implemented using `FavouriteStatus`, a wrapper class containing a boolean value,
+which is included in `Contact` as an additional field. New commands are introduced to manage favourites: adding contacts
+to favourites, removing contacts from favourites, and viewing favourite contacts.
+
+
+
+Bivago also supports marking certain contacts as favourites, which would be useful for managing important, commonly used
+or otherwise notable contacts. This is done through `FavouriteStatus`, a wrapper class with a boolean, which is
+implemented in `Contact` as an additional field. New commands are added to add contacts to favourites, remove contacts
+from favourites and view favourites.
+
+`FavouriteAddCommand` and `FavouriteRemoveCommand` perform a similar operation to `EditCommand`, making use of
+`EditContactDescriptor` to change the `FavouriteStatus` of a `Contact`.
+
+<img src="images/FavouriteAddSequenceDiagram.png" width="600" />
+
+`FavouriteViewCommand` performs a similar operation to `FindCommand`, making use of a different predicate
+`ContactIsFavouritePredicate` to filter only contacts whose `FavouriteStatus` is set to true.
+
+<img src="images/FavouriteViewSequenceDiagram.png" width="600" />
+
 ### Undo/redo feature
 
 #### Implementation
@@ -242,7 +283,7 @@ The following activity diagram summarizes what happens when a user executes a ne
   * Pros: Easy to implement.
   * Cons: May have performance issues in terms of memory usage.
 
-* **Alternative 2:** Individual command knows how to undo/redo by
+* **Alternative Implementation:** Individual command knows how to undo/redo by
   itself.
   * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
   * Cons: We must ensure that the implementation of each individual command are correct.
@@ -506,12 +547,12 @@ Priorities: High (must have) — `* * *`, Medium (nice to have) — `* *`, Low (
 
 ---
 
-### Use Case: UC10 - Add a Contact to Favorites
+### Use Case: UC10 - Add a Contact to Favourites
 
 **MSS**
-1. User requests to add a contact to favorites using its index in the displayed list.
-2. Bivago marks the contact as a favorite.
-3. Bivago confirms that the contact has been added to favorites.
+1. User requests to add a contact to favourites using its index in the displayed list.
+2. Bivago marks the contact as a favourite.
+3. Bivago confirms that the contact has been added to favourites.
 
 *Use case ends.*
 
@@ -521,18 +562,18 @@ Priorities: High (must have) — `* * *`, Medium (nice to have) — `* *`, Low (
     - 1a1. Bivago shows an error message.
     - 1a2. Use case resumes at step 1.
 
-- 1b. The contact is already marked as a favorite.
-    - 1b1. Bivago shows an error message indicating the contact is already in favorites.
+- 1b. The contact is already marked as a favourite.
+    - 1b1. Bivago shows an error message indicating the contact is already in favourites.
     - 1b2. Use case resumes at step 1.
 
 ---
 
-### Use Case: UC11 - Remove a Contact from Favorites
+### Use Case: UC11 - Remove a Contact from favourites
 
 **MSS**
-1. User requests to remove a contact from favorites using its index in the displayed list.
-2. Bivago unmarks the contact as a favorite.
-3. Bivago confirms that the contact has been removed from favorites.
+1. User requests to remove a contact from favourites using its index in the displayed list.
+2. Bivago unmarks the contact as a favourite.
+3. Bivago confirms that the contact has been removed from favourites.
 
 *Use case ends.*
 
@@ -542,24 +583,24 @@ Priorities: High (must have) — `* * *`, Medium (nice to have) — `* *`, Low (
     - 1a1. Bivago shows an error message.
     - 1a2. Use case resumes at step 1.
 
-- 1b. The contact is not marked as a favorite.
-    - 1b1. Bivago shows an error message indicating the contact is not in favorites.
+- 1b. The contact is not marked as a favourite.
+    - 1b1. Bivago shows an error message indicating the contact is not in favourites.
     - 1b2. Use case resumes at step 1.
 
 ---
 
-### Use Case: UC12 - View Favorite Contacts
+### Use Case: UC12 - View favourite Contacts
 
 **MSS**
-1. User requests to view favorite contacts.
-2. Bivago displays the list of contacts marked as favorites.
+1. User requests to view favourite contacts.
+2. Bivago displays the list of contacts marked as favourites.
 
 *Use case ends.*
 
 **Extensions**
 
-- 2a. There are no contacts marked as favorites.
-    - 2a1. Bivago displays an empty list indicating no favorite contacts were found.
+- 2a. There are no contacts marked as favourites.
+    - 2a1. Bivago displays an empty list indicating no favourite contacts were found.
     - 2a2. Use case ends.
 
 ---
@@ -583,7 +624,7 @@ Priorities: High (must have) — `* * *`, Medium (nice to have) — `* *`, Low (
 |------|------------|
 | **Mainstream OS** | Windows, Linux, Unix, or macOS. |
 | **Contact** | A service provider in the tour guide's network, such as a driver, restaurant, hotel, or tourist attraction. |
-| **Favorites** | A list of contacts chosen by the tour guide accessible by dedicated commands, each denoted by a star beside the name in the contact list. |
+| **favourites** | A list of contacts chosen by the tour guide accessible by dedicated commands, each denoted by a star beside the name in the contact list. |
 | **Tour Package** | A planned tour offering that groups together a set of contacts (e.g. driver, restaurants, attractions) under a named itinerary. |
 | **Category** | A classification label for contacts. Valid categories include: Driver, Restaurant, Hotel, Attraction. |
 | **Tag** | A label applied to a tour package to describe its type, e.g. `sightseeing`, `food`. |
@@ -624,7 +665,7 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: None.
 
     1. Test case: `add type/person n/John Doe p/98765432 e/john@example.com a/123 Stree t/driver`<br>
-       Expected: Contact is added. Details of the added contact shown in the status message.
+       Expected: Contact is added. Contact is added to the data file. Details of the added contact shown in the status message.
 
     1. Test case: Missing fields (e.g. `add n/John`)<br>
        Expected: Error message indicating missing required fields.
@@ -654,7 +695,7 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: At least one contact exists.
 
     1. Test case: `edit 1 n/Jane Doe`<br>
-       Expected: First contact’s name is updated.
+       Expected: First contact’s name is updated. Contact details are updated in the data file.
 
     1. Test cases: Invalid fields (e.g. `edit`, `edit 0`, `edit a`)<br>
        Expected: Error message for invalid command format.
@@ -662,69 +703,80 @@ testers are expected to do more *exploratory* testing.
     1. Test case: Missing fields (e.g. `edit 1`)<br>
        Expected: Error message indicating no fields provided.
 
-### Deleting a person
+### Deleting a contact
 
-1. Deleting a person while all persons are being shown
+1. Deleting a contact while all contacts are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
 
    1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+      Expected: First contact in the overall contact list is deleted. Contact is removed from the data file. Details of the deleted contact shown in the status message.
 
    1. Test case: Missing fields (e.g. `delete`)<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No contact is deleted. Error details shown in the status message. Status bar remains the same.
 
    1. Test case: Invalid fields (e.g. `delete 0`)<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+      Expected: No contact is deleted. Error details shown in the status message. Status bar remains the same.
 
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+1. Deleting a contact from a filtered list
 
-### Adding a contact to favorites
+    1. Prerequisites: List all contacts using the `list` command. Use the `find` command to filter the list (e.g. `find n/John`).
 
-1. Adding a contact to favorites
+    1. Test case: `delete 1`<br>
+       Expected: First contact in the filtered list is deleted (not first contact in overall list). Contact is removed from the data file. Details of the deleted contact shown in the status message.
+
+    1. Test case: `delete 2` (when only 1 result is shown)<br>
+       Expected: No contact is deleted. Error details shown in the status message.
+
+### Adding a contact to favourites
+
+1. Adding a contact to favourites
 
     1. Prerequisites: At least one contact exists.
 
-    1. Test case: `favorite-add 1`<br>
-       Expected: Contact is marked as favorite (star appears).
+    1. Test case: `favourite-add 1`<br>
+       Expected: Contact is marked as favourite (star appears in GUI). Contact details are updated in the data file.
 
-    1. Test case: Missing fields (e.g. `favorite-add`)<br>
+    1. Test case: Missing fields (e.g. `favourite-add`)<br>
        Expected: Error message for invalid command format.
 
-    1. Test case: Invalid fields (e.g. `favorite-add a`, `favorite-add 0`)<br>
+    1. Test case: Invalid fields (e.g. `favourite-add a`, `favourite-add 0`)<br>
        Expected: Error message for invalid command format.
 
-    1. Test case: `favorite-add 1` (already favorite)<br>
-       Expected: Error message indicating contact is already a favorite.
+    1. Test case: `favourite-add 1` (already favourite)<br>
+       Expected: Error message indicating contact is already a favourite.
 
-### Removing a contact from favorites
+### Removing a contact from favourites
 
-1. Removing a contact from favorites
+1. Removing a contact from favourites
 
-    1. Prerequisites: At least one contact marked as favorite.
+    1. Prerequisites: At least one contact marked as favourite.
 
-    1. Test case: Missing fields (e.g. `favorite-remove`)<br>
+    1. Test case: `favourite-remove 1`<br>
+       Expected: Contact is marked as not favourite (star disappears in GUI). Contact details are updated in the data file.
+
+    1. Test case: Missing fields (e.g. `favourite-remove`)<br>
        Expected: Error message for invalid command format.
 
-    1. Test case: Invalid fields (e.g. `favorite-remove a`, `favorite-remove 0`)<br>
+    1. Test case: Invalid fields (e.g. `favourite-remove a`, `favourite-remove 0`)<br>
        Expected: Error message for invalid command format.
 
-    1. Test case: Removing non-favorite contact<br>
-       Expected: Error message indicating contact is already not a favorite.
+    1. Test case: Removing non-favourite contact<br>
+       Expected: Error message indicating contact is already not a favourite.
 
-### Viewing favorite contacts
+### Viewing favourite contacts
 
-1. Viewing favorites
+1. Viewing favourites
 
-    1. Prerequisites: At least one contact marked as favorite.
+    1. Prerequisites: At least one contact marked as favourite.
 
-    1. Test case: `favorite-view`<br>
-       Expected: Only favorite contacts are displayed.
+    1. Test case: `favourite-view`<br>
+       Expected: Only favourite contacts are displayed.
 
-    1. Test case: No favorites exist<br>
+    1. Test case: No favourites exist<br>
        Expected: A message indicating 0 contacts listed.
 
 ### Saving data

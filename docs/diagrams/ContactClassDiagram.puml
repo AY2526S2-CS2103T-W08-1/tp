@@ -1,0 +1,52 @@
+@startuml
+!include style.puml
+show members
+
+skinparam DefaultFontColor #FFFFFF
+skinparam PackageFontColor #000000
+skinparam classAttributeIconSize 0
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+
+package Model {
+    abstract class Contact <<abstract>>  {
+
+    }
+
+    class Person {
+    }
+
+    class Fnb {
+      - halalStatus: HalalStatus
+      + getHalalStatus(): HalalStatus
+    }
+
+    class Attraction {
+      - openingHour: OpeningHour
+      - closingHour: ClosingHour
+      + getOpeningHour(): OpeningHour
+      + getClosingHour(): ClosingHour
+    }
+
+    class Accommodation {
+      - accommodationStars: AccommodationStars
+      + getAccommodationStars(): AccommodationStars
+    }
+
+    class HalalStatus
+    class OpeningHour
+    class ClosingHour
+    class AccommodationStars
+}
+
+Contact <|-- Person
+Contact <|-- Fnb
+Contact <|-- Attraction
+Contact <|-- Accommodation
+
+Fnb --> HalalStatus
+Attraction --> OpeningHour
+Attraction --> ClosingHour
+Accommodation --> AccommodationStars
+@enduml
