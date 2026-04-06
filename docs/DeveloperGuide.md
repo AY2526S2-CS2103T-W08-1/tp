@@ -192,19 +192,14 @@ or otherwise notable contacts. This is implemented using `FavouriteStatus`, a wr
 which is included in `Contact` as an additional field. New commands are introduced to manage favourites: adding contacts
 to favourites, removing contacts from favourites, and viewing favourite contacts.
 
+How contact favourites works:
 
-
-Bivago also supports marking certain contacts as favourites, which would be useful for managing important, commonly used
-or otherwise notable contacts. This is done through `FavouriteStatus`, a wrapper class with a boolean, which is
-implemented in `Contact` as an additional field. New commands are added to add contacts to favourites, remove contacts
-from favourites and view favourites.
-
-`FavouriteAddCommand` and `FavouriteRemoveCommand` perform a similar operation to `EditCommand`, making use of
+* `FavouriteAddCommand` and `FavouriteRemoveCommand` perform a similar operation to `EditCommand`, making use of
 `EditContactDescriptor` to change the `FavouriteStatus` of a `Contact`.
 
 <img src="images/FavouriteAddSequenceDiagram.png" width="600" />
 
-`FavouriteViewCommand` performs a similar operation to `FindCommand`, making use of a different predicate
+* `FavouriteViewCommand` performs a similar operation to `FindCommand`, making use of a different predicate
 `ContactIsFavouritePredicate` to filter only contacts whose `FavouriteStatus` is set to true.
 
 <img src="images/FavouriteViewSequenceDiagram.png" width="600" />
@@ -623,14 +618,14 @@ Priorities: High (must have) — `* * *`, Medium (nice to have) — `* *`, Low (
 
 ### Glossary
 
-| Term | Definition |
-|------|------------|
-| **Mainstream OS** | Windows, Linux, Unix, or macOS. |
-| **Contact** | A service provider in the tour guide's network, such as a driver, restaurant, hotel, or tourist attraction. |
-| **favourites** | A list of contacts chosen by the tour guide accessible by dedicated commands, each denoted by a star beside the name in the contact list. |
-| **Tour Package** | A planned tour offering that groups together a set of contacts (e.g. driver, restaurants, attractions) under a named itinerary. |
-| **Category** | A classification label for contacts. Valid categories include: Driver, Restaurant, Hotel, Attraction. |
-| **Tag** | A label applied to a tour package to describe its type, e.g. `sightseeing`, `food`. |
+| Term                             | Definition |
+|----------------------------------|------------|
+| **Mainstream OS**                | Windows, Linux, Unix, or macOS. |
+| **Contact**                      | A service provider in the tour guide's network, such as a driver, restaurant, hotel, or tourist attraction. |
+| **Favourites**                   | A list of contacts chosen by the tour guide accessible by dedicated commands, each denoted by a star beside the name in the contact list. |
+| **Tour Package**                 | A planned tour offering that groups together a set of contacts (e.g. driver, restaurants, attractions) under a named itinerary. |
+| **Category**                     | A classification label for contacts. Valid categories include: Driver, Restaurant, Hotel, Attraction. |
+| **Tag**                          | A label applied to a tour package to describe its type, e.g. `sightseeing`, `food`. |
 | **CLI (Command-Line Interface)** | A text-based interface where the user interacts with the application by typing commands rather than clicking buttons or menus. |
 
 --------------------------------------------------------------------------------------------------------------------
