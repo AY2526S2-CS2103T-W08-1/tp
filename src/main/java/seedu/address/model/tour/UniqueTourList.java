@@ -9,6 +9,9 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.address.model.contact.Contact;
+import seedu.address.model.contact.exceptions.ContactNotFoundException;
+import seedu.address.model.contact.exceptions.DuplicateContactException;
 import seedu.address.model.tour.exceptions.DuplicateTourException;
 import seedu.address.model.tour.exceptions.TourNotFoundException;
 
@@ -42,6 +45,26 @@ public class UniqueTourList implements Iterable<Tour> {
             throw new DuplicateTourException();
         }
         internalList.add(toAdd);
+    }
+
+    /**
+     * Replaces the tour {@code target} in the list with {@code editedTour}.
+     * {@code target} must exist in the list.
+     * The tour identity of {@code editedTour} must not be the same as another existing tour in the list.
+     */
+    public void setTour(Tour target, Tour editedTour) {
+        requireAllNonNull(target, editedTour);
+
+        int index = internalList.indexOf(target);
+        if (index == -1) {
+            throw new TourNotFoundException();
+        }
+
+        if (contains(editedTour)) {
+            throw new DuplicateTourException();
+        }
+
+        internalList.set(index, editedTour);
     }
 
     /**
