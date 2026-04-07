@@ -1,6 +1,7 @@
 package seedu.address.logic.commands.contact;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_NON_APPLICABLE_FIELDS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_CLOSING_HOUR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
@@ -29,12 +30,15 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.contact.Accommodation;
 import seedu.address.model.contact.AccommodationStars;
 import seedu.address.model.contact.Address;
+import seedu.address.model.contact.Attraction;
 import seedu.address.model.contact.ClosingHour;
 import seedu.address.model.contact.Contact;
 import seedu.address.model.contact.Email;
 import seedu.address.model.contact.FavouriteStatus;
+import seedu.address.model.contact.Fnb;
 import seedu.address.model.contact.HalalStatus;
 import seedu.address.model.contact.Name;
 import seedu.address.model.contact.OpeningHour;
@@ -140,9 +144,30 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Contact} with the details of {@code contactToEdit}
      * edited with {@code editContactDescriptor}.
      */
-    private static Contact createEditedContact(Contact contactToEdit, EditContactDescriptor editContactDescriptor) {
+    private static Contact createEditedContact(
+            Contact contactToEdit, EditContactDescriptor editContactDescriptor) throws CommandException {
         requireNonNull(contactToEdit);
         requireNonNull(editContactDescriptor);
+
+        // Check for non-applicable fields
+        if (!(contactToEdit instanceof Fnb)) {
+            if (editContactDescriptor.getHalalStatus().isPresent()) {
+                throwNonApplicableFieldException();
+            }
+        }
+
+        if (!(contactToEdit instanceof Attraction)) {
+            if (editContactDescriptor.getOpeningHour().isPresent()
+                    || editContactDescriptor.getClosingHour().isPresent()) {
+                throwNonApplicableFieldException();
+            }
+        }
+
+        if (!(contactToEdit instanceof Accommodation)) {
+            if (editContactDescriptor.getStars().isPresent()) {
+                throwNonApplicableFieldException();
+            }
+        }
 
         Contact editedContact = contactToEdit.edit(editContactDescriptor);
 
@@ -173,6 +198,11 @@ public class EditCommand extends Command {
                 .add("index", index)
                 .add("editContactDescriptor", editContactDescriptor)
                 .toString();
+    }
+
+    private static void throwNonApplicableFieldException() throws CommandException {
+        logger.info("Values for non-applicable fields provided");
+        throw new CommandException(String.format(MESSAGE_NON_APPLICABLE_FIELDS, EditCommand.MESSAGE_USAGE));
     }
 
     /**
