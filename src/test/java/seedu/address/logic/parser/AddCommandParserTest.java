@@ -177,6 +177,20 @@ public class AddCommandParserTest {
     }
 
     @Test
+    public void parse_fnbWithoutHalalStatus_success() {
+        Contact expectedContact = new FnbBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB)
+                .withAddress(VALID_ADDRESS_BOB)
+                .build();
+
+        assertParseSuccess(parser,
+                TYPE_DESC_FNB + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB,
+                new AddCommand(expectedContact));
+    }
+
+    @Test
     public void parse_attractionWithOpeningAndClosingHour_success() {
         Contact expectedContact = new AttractionBuilder()
                 .withOpeningHour("09:00")
@@ -195,6 +209,52 @@ public class AddCommandParserTest {
     }
 
     @Test
+    public void parse_attractionWithoutOpeningAndClosingHour_success() {
+        Contact expectedContact = new AttractionBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB)
+                .withAddress(VALID_ADDRESS_BOB)
+                .build();
+
+        assertParseSuccess(parser,
+                TYPE_DESC_ATTRACTION + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB,
+                new AddCommand(expectedContact));
+    }
+
+    @Test
+    public void parse_attractionWithClosingHourOnly_success() {
+        Contact expectedContact = new AttractionBuilder()
+                .withClosingHour("18:00")
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB)
+                .withAddress(VALID_ADDRESS_BOB)
+                .build();
+
+        assertParseSuccess(parser,
+                TYPE_DESC_ATTRACTION + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
+                        + " " + PREFIX_CLOSING_HOUR + "18:00",
+                new AddCommand(expectedContact));
+    }
+
+    @Test
+    public void parse_attractionWithOpeningHourOnly_success() {
+        Contact expectedContact = new AttractionBuilder()
+                .withOpeningHour("09:00")
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB)
+                .withAddress(VALID_ADDRESS_BOB)
+                .build();
+
+        assertParseSuccess(parser,
+                TYPE_DESC_ATTRACTION + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
+                        + " " + PREFIX_OPENING_HOUR + "09:00",
+                new AddCommand(expectedContact));
+    }
+
+    @Test
     public void parse_accommodationWithStars_success() {
         Contact expectedContact = new AccommodationBuilder()
                 .withStars("5")
@@ -207,6 +267,20 @@ public class AddCommandParserTest {
         assertParseSuccess(parser,
                 TYPE_DESC_ACCOMMODATION + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
                         + " " + PREFIX_STARS + "5",
+                new AddCommand(expectedContact));
+    }
+
+    @Test
+    public void parse_accommodationWithoutStars_success() {
+        Contact expectedContact = new AccommodationBuilder()
+                .withName(VALID_NAME_BOB)
+                .withPhone(VALID_PHONE_BOB)
+                .withEmail(VALID_EMAIL_BOB)
+                .withAddress(VALID_ADDRESS_BOB)
+                .build();
+
+        assertParseSuccess(parser,
+                TYPE_DESC_ACCOMMODATION + NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB,
                 new AddCommand(expectedContact));
     }
 
