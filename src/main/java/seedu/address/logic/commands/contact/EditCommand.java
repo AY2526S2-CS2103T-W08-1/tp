@@ -152,20 +152,23 @@ public class EditCommand extends Command {
         // Check for non-applicable fields
         if (!(contactToEdit instanceof Fnb)) {
             if (editContactDescriptor.getHalalStatus().isPresent()) {
-                throwNonApplicableFieldException();
+                logger.info("Values for non-applicable fields provided");
+                throw new CommandException(String.format(MESSAGE_NON_APPLICABLE_FIELDS, EditCommand.MESSAGE_USAGE));
             }
         }
 
         if (!(contactToEdit instanceof Attraction)) {
             if (editContactDescriptor.getOpeningHour().isPresent()
                     || editContactDescriptor.getClosingHour().isPresent()) {
-                throwNonApplicableFieldException();
+                logger.info("Values for non-applicable fields provided");
+                throw new CommandException(String.format(MESSAGE_NON_APPLICABLE_FIELDS, EditCommand.MESSAGE_USAGE));
             }
         }
 
         if (!(contactToEdit instanceof Accommodation)) {
             if (editContactDescriptor.getStars().isPresent()) {
-                throwNonApplicableFieldException();
+                logger.info("Values for non-applicable fields provided");
+                throw new CommandException(String.format(MESSAGE_NON_APPLICABLE_FIELDS, EditCommand.MESSAGE_USAGE));
             }
         }
 
@@ -198,11 +201,6 @@ public class EditCommand extends Command {
                 .add("index", index)
                 .add("editContactDescriptor", editContactDescriptor)
                 .toString();
-    }
-
-    private static void throwNonApplicableFieldException() throws CommandException {
-        logger.info("Values for non-applicable fields provided");
-        throw new CommandException(String.format(MESSAGE_NON_APPLICABLE_FIELDS, EditCommand.MESSAGE_USAGE));
     }
 
     /**

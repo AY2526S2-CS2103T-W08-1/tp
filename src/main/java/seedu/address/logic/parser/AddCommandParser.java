@@ -74,20 +74,23 @@ public class AddCommandParser implements Parser<AddCommand> {
         // Check for non-applicable fields
         if (!type.equals(TYPE_FNB)) {
             if (arePrefixesPresent(argMultimap, PREFIX_HALAL_STATUS)) {
-                throwNonApplicableFieldException();
+                logger.info("Values for non-applicable fields provided");
+                throw new ParseException(String.format(MESSAGE_NON_APPLICABLE_FIELDS, AddCommand.MESSAGE_USAGE));
             }
         }
 
         if (!type.equals(TYPE_ATTRACTION)) {
             if (arePrefixesPresent(argMultimap, PREFIX_OPENING_HOUR)
                     || arePrefixesPresent(argMultimap, PREFIX_CLOSING_HOUR)) {
-                throwNonApplicableFieldException();
+                logger.info("Values for non-applicable fields provided");
+                throw new ParseException(String.format(MESSAGE_NON_APPLICABLE_FIELDS, AddCommand.MESSAGE_USAGE));
             }
         }
 
         if (!type.equals(TYPE_ACCOMMODATION)) {
             if (arePrefixesPresent(argMultimap, PREFIX_STARS)) {
-                throwNonApplicableFieldException();
+                logger.info("Values for non-applicable fields provided");
+                throw new ParseException(String.format(MESSAGE_NON_APPLICABLE_FIELDS, AddCommand.MESSAGE_USAGE));
             }
         }
 
@@ -144,11 +147,6 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
-    }
-
-    private static void throwNonApplicableFieldException() throws ParseException {
-        logger.info("Values for non-applicable fields provided");
-        throw new ParseException(String.format(MESSAGE_NON_APPLICABLE_FIELDS, AddCommand.MESSAGE_USAGE));
     }
 
 }
