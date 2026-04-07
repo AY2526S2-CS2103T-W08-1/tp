@@ -18,7 +18,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.commons.util.ToStringBuilder;
@@ -69,6 +71,8 @@ public class EditCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_CONTACT = "This contact already exists in the address book.";
 
+    private static final Logger logger = LogsCenter.getLogger(EditCommand.class);
+
     private final Index index;
     private final EditContactDescriptor editContactDescriptor;
 
@@ -87,23 +91,49 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        Contact contactToEdit = getContactToEdit(model);
+        Contact editedContact = getEditedContact(contactToEdit, model);
+
+        model.setContact(contactToEdit, editedContact);
+        model.commitAddressBook();
+        assert contactToEdit != editedContact : "Original contact must have been edited";
+        logger.fine(String.format("Edited contact from %s to %s", contactToEdit, editedContact));
+
+        model.updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
+        return new CommandResult(String.format(MESSAGE_EDIT_CONTACT_SUCCESS, Messages.format(editedContact)));
+    }
+
+    /**
+     * Returns the contact to edit.
+     */
+    private Contact getContactToEdit(Model model) throws CommandException {
         List<Contact> lastShownList = model.getFilteredContactList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
+            logger.info("Invalid index for EditCommand");
             throw new CommandException(Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
         }
 
-        Contact contactToEdit = lastShownList.get(index.getZeroBased());
+        return lastShownList.get(index.getZeroBased());
+    }
+
+    /**
+     * Returns the edited contact.
+     */
+    private Contact getEditedContact(Contact contactToEdit, Model model) throws CommandException {
+        requireNonNull(contactToEdit);
+        requireNonNull(model);
+        requireNonNull(editContactDescriptor);
+
         Contact editedContact = createEditedContact(contactToEdit, editContactDescriptor);
 
         if (!contactToEdit.isSameContact(editedContact) && model.hasContact(editedContact)) {
+            logger.info("Contact is already the same");
             throw new CommandException(MESSAGE_DUPLICATE_CONTACT);
         }
 
-        model.setContact(contactToEdit, editedContact);
-        model.updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
-        model.commitAddressBook();
-        return new CommandResult(String.format(MESSAGE_EDIT_CONTACT_SUCCESS, Messages.format(editedContact)));
+        return editedContact;
     }
 
     /**
@@ -111,9 +141,14 @@ public class EditCommand extends Command {
      * edited with {@code editContactDescriptor}.
      */
     private static Contact createEditedContact(Contact contactToEdit, EditContactDescriptor editContactDescriptor) {
-        assert contactToEdit != null;
+        requireNonNull(contactToEdit);
+        requireNonNull(editContactDescriptor);
 
-        return contactToEdit.edit(editContactDescriptor);
+        Contact editedContact = contactToEdit.edit(editContactDescriptor);
+
+        assert editedContact != null : "Edited contact should not be null";
+        assert contactToEdit != editedContact : "Edited contact should not the same as the original contact";
+        return editedContact;
     }
 
     @Override

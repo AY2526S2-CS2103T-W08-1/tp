@@ -1,0 +1,22 @@
+@startuml
+actor User
+participant "LogicManager" as Logic
+participant "FavouriteAddCommandParser" as Parser
+participant "FavouriteAddCommand" as Command
+participant "Model" as Model
+participant "Contact" as Contact
+
+User -> Logic : execute("favourite-add 1")
+Logic -> Parser : parse("1")
+Parser --> Logic : FavouriteAddCommand
+
+Logic -> Command : execute(model)
+Command -> Model : getFilteredContactList()
+Model --> Command : currently displayed contact list
+Command -> Command : check for valid index
+Command -> Contact : create edited contact with favourite status set to true
+Command -> Model : setContact(oldContact, editedContact)
+Command -> Model : updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS)
+Command --> Logic : CommandResult
+Logic --> User : "Added contact to favourites: ..."
+@enduml

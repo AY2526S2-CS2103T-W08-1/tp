@@ -2,9 +2,12 @@ package seedu.address.logic.commands.favourite;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_CONTACTS;
+import static seedu.address.model.contact.FavouriteStatus.VALID_FAVOURITE_STATUS_TRUE;
 
 import java.util.List;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -32,6 +35,9 @@ public class FavouriteAddCommand extends Command {
     public static final String MESSAGE_ADD_FAVOURITE_SUCCESS = "Added contact to favourites: %1$s";
     public static final String MESSAGE_DUPLICATE_FAVOURITE = "Contact is already in favourites.";
 
+
+    private static final Logger logger = LogsCenter.getLogger(FavouriteAddCommand.class);
+
     private final Index contactIndex;
 
     /**
@@ -45,29 +51,51 @@ public class FavouriteAddCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+        Contact contactToEdit = getContactToEdit(model);
+        Contact editedContact = getEditedContact(contactToEdit);
+        model.setContact(contactToEdit, editedContact);
+        model.commitAddressBook();
+        logger.fine(String.format("Added contact to favourites: %s", editedContact));
+        model.updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
+        return new CommandResult(String.format(MESSAGE_ADD_FAVOURITE_SUCCESS, Messages.format(editedContact)));
+    }
+
+    /**
+     * Returns the contact to add to favourites.
+     */
+    private Contact getContactToEdit(Model model) throws CommandException {
         List<Contact> lastShownContactList = model.getFilteredContactList();
 
         if (contactIndex.getZeroBased() >= lastShownContactList.size()) {
+            logger.info("Invalid index for FavouriteAddCommand");
             throw new CommandException(Messages.MESSAGE_INVALID_CONTACT_DISPLAYED_INDEX);
         }
 
         Contact contactToEdit = lastShownContactList.get(contactIndex.getZeroBased());
+        assert contactToEdit != null : "Contact from contact list must not be null.";
 
         if (contactToEdit.isFavourite()) {
+            logger.info("Contact is already in favourites");
             throw new CommandException(MESSAGE_DUPLICATE_FAVOURITE);
         }
 
-        FavouriteStatus updatedFavouriteStatus = new FavouriteStatus("true");
+        return contactToEdit;
+    }
 
+    /**
+     * Returns the contact with updated favourite status.
+     */
+    private Contact getEditedContact(Contact contactToEdit) {
+        requireNonNull(contactToEdit);
         EditCommand.EditContactDescriptor descriptor = new EditCommand.EditContactDescriptor();
-        descriptor.setFavourite(updatedFavouriteStatus);
+        descriptor.setFavourite(new FavouriteStatus(VALID_FAVOURITE_STATUS_TRUE));
 
         Contact editedContact = contactToEdit.edit(descriptor);
 
-        model.setContact(contactToEdit, editedContact);
-        model.updateFilteredContactList(PREDICATE_SHOW_ALL_CONTACTS);
-        model.commitAddressBook();
-        return new CommandResult(String.format(MESSAGE_ADD_FAVOURITE_SUCCESS, Messages.format(editedContact)));
+        assert editedContact != null : "Edited contact must not be null.";
+        assert editedContact.isFavourite() : "Contact must have been added to favourites.";
+
+        return editedContact;
     }
 
     @Override

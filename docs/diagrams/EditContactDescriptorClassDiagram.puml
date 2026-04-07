@@ -1,0 +1,46 @@
+@startuml
+!include style.puml
+show members
+
+skinparam DefaultFontColor #FFFFFF
+skinparam PackageFontColor #000000
+skinparam classAttributeIconSize 0
+skinparam arrowThickness 1.1
+skinparam arrowColor LOGIC_COLOR
+skinparam classBackgroundColor LOGIC_COLOR
+
+package Logic {
+    class EditCommand {
+      - index: Index
+      - editContactDescriptor: EditContactDescriptor
+      + execute(model: Model): CommandResult
+      - createEditedContact(contact: Contact, descriptor: EditContactDescriptor): Contact
+    }
+
+    class EditContactDescriptor {
+      - name: Name
+      - phone: Phone
+      - email: Email
+      - address: Address
+      - tags: Set<Tag>
+      - tours: Set<Tour>
+      - halalStatus: HalalStatus
+      - openingHour: OpeningHour
+      - closingHour: ClosingHour
+      - accommodationStars: AccommodationStars
+      - favouriteStatus: FavouriteStatus
+    }
+
+    class EditCommandParser {
+      + parse(args: String): EditCommand
+    }
+
+    class Contact {
+    }
+}
+
+
+EditCommandParser --> EditCommand
+EditCommand --> EditContactDescriptor
+EditCommand --> Contact
+@enduml
