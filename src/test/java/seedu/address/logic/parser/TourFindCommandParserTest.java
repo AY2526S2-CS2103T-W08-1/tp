@@ -24,7 +24,8 @@ public class TourFindCommandParserTest {
     @Test
     public void parse_blankArg_throwsParseException() {
         // equivalence partition: blank arg
-        assertParseFailure(parser, "     ", String.format(MESSAGE_INVALID_COMMAND_FORMAT, TourFindCommand.MESSAGE_USAGE));
+        assertParseFailure(parser, "     ",
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, TourFindCommand.MESSAGE_USAGE));
     }
 
     @Test
