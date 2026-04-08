@@ -24,7 +24,6 @@
                     </minWidth>
                 </Label>
                 <Label fx:id="tourName" text="\$tourName" styleClass="cell_big_label" />
-                    <Label fx:id="favouriteStatus" text="★" style="-fx-text-fill: gold" />
             </HBox>
         </VBox>
     </GridPane>
