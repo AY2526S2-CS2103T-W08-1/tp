@@ -3,13 +3,9 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_CLOSING_HOUR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_HALAL_STATUS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_OPENING_HOUR;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_STARS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TYPE;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -51,7 +47,7 @@ public class CommandTestUtil {
 
     public static final String VALID_TYPE_FNB = "fnb";
     public static final String VALID_TYPE_ATTRACTION = "attraction";
-    public static final String VALID_TYPE_ACCOMMODATION = "accommodation";
+    public static final String VALID_TYPE_ACCOMMODATION = "accomm";
 
     public static final String VALID_NAME_FNB = "Al Azhar";
     public static final String VALID_NAME_ATTRACTION = "USS";
@@ -84,6 +80,11 @@ public class CommandTestUtil {
 
     public static final String VALID_TOUR_NAME_JAMES = "Le Tour James";
     public static final String VALID_TOUR_NAME_JAMES_JR = "Le Tour James Jr";
+    public static final String VALID_TOUR_NAME_JAMES_SR = "Le Tour James Sr";
+    public static final String VALID_TOUR_NAME_HALLOWEEN_WALK = "Halloween Walk";
+    public static final String VALID_TOUR_FAVOURITE_STATUS_TRUE = "true";
+    public static final String VALID_TOUR_FAVOURITE_STATUS_FALSE = "false";
+    public static final String INVALID_TOUR_FAVOURITE_STATUS = "maybe";
 
     public static final String TYPE_DESC_AMY = " " + PREFIX_TYPE + VALID_TYPE_AMY;
     public static final String TYPE_DESC_BOB = " " + PREFIX_TYPE + VALID_TYPE_BOB;
@@ -102,42 +103,12 @@ public class CommandTestUtil {
     public static final String TYPE_DESC_ATTRACTION = " " + PREFIX_TYPE + VALID_TYPE_ATTRACTION;
     public static final String TYPE_DESC_ACCOMMODATION = " " + PREFIX_TYPE + VALID_TYPE_ACCOMMODATION;
 
-    public static final String NAME_DESC_FNB = " " + PREFIX_NAME + VALID_NAME_FNB;
-    public static final String NAME_DESC_ATTRACTION = " " + PREFIX_NAME + VALID_NAME_ATTRACTION;
-    public static final String NAME_DESC_ACCOMMODATION = " " + PREFIX_NAME + VALID_NAME_ACCOMMODATION;
-
-    public static final String PHONE_DESC_FNB = " " + PREFIX_PHONE + VALID_PHONE_FNB;
-    public static final String PHONE_DESC_ATTRACTION = " " + PREFIX_PHONE + VALID_PHONE_ATTRACTION;
-    public static final String PHONE_DESC_ACCOMMODATION = " " + PREFIX_PHONE + VALID_PHONE_ACCOMMODATION;
-
-    public static final String EMAIL_DESC_FNB = " " + PREFIX_EMAIL + VALID_EMAIL_FNB;
-    public static final String EMAIL_DESC_ATTRACTION = " " + PREFIX_EMAIL + VALID_EMAIL_ATTRACTION;
-    public static final String EMAIL_DESC_ACCOMMODATION = " " + PREFIX_EMAIL + VALID_EMAIL_ACCOMMODATION;
-
-    public static final String ADDRESS_DESC_FNB = " " + PREFIX_ADDRESS + VALID_ADDRESS_FNB;
-    public static final String ADDRESS_DESC_ATTRACTION = " " + PREFIX_ADDRESS + VALID_ADDRESS_ATTRACTION;
-    public static final String ADDRESS_DESC_ACCOMMODATION = " " + PREFIX_ADDRESS + VALID_ADDRESS_ACCOMMODATION;
-
-    public static final String TAG_DESC_INDIAN = " " + PREFIX_TAG + VALID_TAG_INDIAN;
-    public static final String TAG_DESC_FUN = " " + PREFIX_TAG + VALID_TAG_FUN;
-    public static final String TAG_DESC_STAY = " " + PREFIX_TAG + VALID_TAG_STAY;
-
-    public static final String HALAL_STATUS_DESC_FNB = " " + PREFIX_HALAL_STATUS + VALID_HALAL_STATUS_TRUE_FNB;
-    public static final String OPENING_HOUR_DESC_ATTRACTION = " " + PREFIX_OPENING_HOUR + VALID_OPENING_HOUR_ATTRACTION;
-    public static final String CLOSING_HOUR_DESC_ATTRACTION = " " + PREFIX_CLOSING_HOUR + VALID_CLOSING_HOUR_ATTRACTION;
-    public static final String STARS_DESC_ACCOMMODATION = " " + PREFIX_STARS + VALID_STARS_ACCOMMODATION;
-
     public static final String INVALID_TYPE_DESC = " " + PREFIX_TYPE + "people";
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
-
-    public static final String INVALID_HALAL_STATUS_DESC = " " + PREFIX_HALAL_STATUS + "Maybe"; // not true/false
-    public static final String INVALID_OPENING_HOUR_DESC = " " + PREFIX_OPENING_HOUR + "9am"; // not in HH:mm format
-    public static final String INVALID_CLOSING_HOUR_DESC = " " + PREFIX_CLOSING_HOUR + "25:00"; // invalid HH:mm value
-    public static final String INVALID_STARS_DESC = " " + PREFIX_STARS + "6"; // invalid value
 
     public static final String TOUR_NAME_DESC_JAMES = " " + PREFIX_NAME + VALID_TOUR_NAME_JAMES;
     public static final String TOUR_NAME_DESC_JAMES_JR = " " + PREFIX_NAME + VALID_TOUR_NAME_JAMES_JR;

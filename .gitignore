@@ -1,11 +1,13 @@
 # Gradle build files
 /.gradle/
 /build/
+/bin/
 src/main/resources/docs/
 
 # IDEA files
 /.idea/
 /out/
+/bin/
 /*.iml
 
 # Storage/log files

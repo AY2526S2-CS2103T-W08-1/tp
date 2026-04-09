@@ -9,7 +9,7 @@ different types of contacts including **people, F&B establishments, accommodatio
 consolidating your contacts and tours in a simple **Command Line Interface (CLI)** application, Bivago helps you plan
 and execute better and smoother tours for your clients.
 
-* Table of Contents
+* Table of Contents 
 {:toc}
 
 ---
@@ -125,7 +125,7 @@ Exits the program.
 Undoes the previous command.
 
 * Commands which do not modify contacts/tours will not be considered
-* There must be at least one command in the command history to be undone
+* There must be at least one command that modifies contacts/tours in the command history to be undone
 * Multiple `undo` commands can be done in a row, as long as there are commands to undo
 
 <details>
@@ -149,9 +149,9 @@ Undoes the previous command.
 Redoes what was undone by an `undo` command.
 
 * Commands which do not modify contacts/tours will not be considered
-* There must be at least one `undo` command in the command history to redo
-* Multiple `redo` commands can be done in a row, as long as there are `undo` commands to redo
-* If another command which modifies contacts/tours is done after an `undo` command, that `undo` command is considered erased from the command history
+* There must be at least one undone command in the command history to be redone
+* Multiple `redo` commands can be done in a row, as long as there are commands to redo
+* If a command which modifies contacts/tours is done after an `undo` command, the redo history will be cleared. This means that the undone command can no longer be redone.
 
 <details>
 <summary><b>Example:</b></summary>
@@ -179,11 +179,7 @@ manually.
 Bivago data are saved automatically as a JSON file `[JAR file location]/data/bivago-data.json`.
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Warning:**
-Please make changes to the data using the commands provided by the app instead of manually editing the
- data file. If you make changes to the data file making its format invalid, Bivago will discard all data and start with
-an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the Bivago to behave in unexpected ways (e.g., if a value entered is outside of
- the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+Do not manually edit the data file. Any modifications that result in an invalid format or out-of-range values will cause Bivago to not work as intended. Always use the commands provided by the app to make changes to your data.
 </div>
 
 ---
@@ -330,7 +326,7 @@ Finds contacts matching a specified type, whose names contain any of the given k
   Finds contacts of type <code>fnb</code>.</li>
 
   <li><code>find type/attraction n/NUS NTU</code> :
-  Finds contacts of type `attraction` whose name contain <code>NUS</code> or <code>NTU</code>.</li>
+  Finds contacts of type <code>attraction</code> whose name contain <code>NUS</code> or <code>NTU</code>.</li>
 </ul>
 
 </details>
@@ -351,7 +347,7 @@ Deletes the specified contact from the contact list.
   <li><code>delete 2</code> :
   Deletes the second contact shown in the current contact list.</li>
 
-  <li><code>find John</code> followed by <code>delete 1</code> :
+  <li><code>find n/John</code> followed by <code>delete 1</code> :
   Deletes the first contact from the filtered results.</li>
 </ul>
 
@@ -376,7 +372,7 @@ Adds a specified contact from the contact list as a favourite contact.
 
 </details>
 
-### Viewing favourite contacts `favourite-view`
+### Viewing favourite contacts: `favourite-view`
 
 Shows a list of all favourite contacts in the contact list.
 
@@ -554,16 +550,16 @@ the data of your previous Bivago home folder.
 
 ### Contact Management
 
-| Action               | Command                                                                                                                                                                                            | Summary                                 |
-|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
+| Action               | Command                                                                                                                                                                                                                     | Summary                                 |
+|----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------|
 | **Add**              | `add type/TYPE n/NAME p/PHONE e/EMAIL a/ADDRESS [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​` <br> e.g., `add type/person n/John Doe p/98765432 e/john@example.com a/311 Clementi Ave 2 t/friend` | Adds a contact to the contact list      |
 | **Delete**           | `delete INDEX` <br> e.g., `delete 3`    | Deletes a contact from the contact list |
 | **Edit**             | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [h/HALAL_STATUS] [o/OPENING_HOUR] [c/CLOSING_HOUR] [s/STARS] [t/TAG]…​` <br> e.g., `edit 2 p/91234567 e/john_new@example.com`                 | Edits a contact in contact list         |
 | **Find**             | `find [type/TYPE] [n/KEYWORD [MORE_KEYWORDS]…​]` <br> e.g., `find type/person n/John Jane` | Filters the contact list                |
 | **List**             | `list`       | Lists all contacts                      |
-| **Favourite Add**    | `favourite-add` <br> e.g., `favourite-add 1` | Adds a contact to favourites            |
+| **Favourite Add**    | `favourite-add INDEX` <br> e.g., `favourite-add 1` | Adds a contact to favourites            |
 | **Favourite View**   | `favourite-view` | Displays favourite contacts             |
-| **Favourite Remove** | `favourite-remove` <br> e.g., `favourite-remove 2` | Removes a contact from favourites       |
+| **Favourite Remove** | `favourite-remove INDEX` <br> e.g., `favourite-remove 2` | Removes a contact from favourites       |
 
 
 ### Tour Management

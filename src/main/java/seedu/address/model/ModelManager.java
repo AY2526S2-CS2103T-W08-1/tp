@@ -168,6 +168,12 @@ public class ModelManager implements Model {
         setContact(contact, contact.withTourRemoved(tour));
     }
 
+    public void setTour(Tour target, Tour editedTour) {
+        requireAllNonNull(target, editedTour);
+
+        addressBook.setTour(target, editedTour);
+    }
+
     //=========== Filtered Contact List Accessors =============================================================
 
     /**

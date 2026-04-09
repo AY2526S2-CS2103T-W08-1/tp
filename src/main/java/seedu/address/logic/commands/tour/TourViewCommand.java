@@ -1,10 +1,11 @@
 package seedu.address.logic.commands.tour;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_TOURS;
 
 import java.util.List;
+import java.util.logging.Logger;
 
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
@@ -27,6 +28,8 @@ public class TourViewCommand extends Command {
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
+    private static final Logger logger = LogsCenter.getLogger(TourViewCommand.class);
+
     private final Index targetIndex;
 
     /**
@@ -42,16 +45,17 @@ public class TourViewCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        model.updateFilteredTourList(PREDICATE_SHOW_ALL_TOURS);
         List<Tour> tourList = model.getFilteredTourList();
 
         if (targetIndex.getZeroBased() >= tourList.size()) {
+            logger.info("Invalid index for TourViewCommand");
             throw new CommandException(Messages.MESSAGE_INVALID_TOUR_DISPLAYED_INDEX);
         }
 
         Tour tour = tourList.get(targetIndex.getZeroBased());
         assert tour != null : "Tour list must not contain null elements";
         model.updateFilteredContactList(new ContactIsInTourPredicate(tour));
+        logger.fine(String.format("Viewing tour: %s", tour));
         return new CommandResult(
                 String.format(Messages.MESSAGE_CONTACTS_LISTED_OVERVIEW, model.getFilteredContactList().size()));
     }

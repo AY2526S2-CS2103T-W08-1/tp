@@ -21,6 +21,7 @@ class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_CONTACT = "Contacts list contains duplicate contact(s).";
     public static final String MESSAGE_DUPLICATE_TOUR = "Tours list contains duplicate tour(s).";
+    public static final String MESSAGE_TOUR_NOT_FOUND = "Contact references a tour that does not exist: %s";
 
     private final List<JsonAdaptedContact> contacts = new ArrayList<>();
     private final List<JsonAdaptedTour> tours = new ArrayList<>();
@@ -65,6 +66,13 @@ class JsonSerializableAddressBook {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_TOUR);
             }
             addressBook.addTour(tour);
+        }
+        for (Contact contact : addressBook.getContactList()) {
+            for (Tour tour : contact.getTours()) {
+                if (!addressBook.hasTour(tour)) {
+                    throw new IllegalValueException(String.format(MESSAGE_TOUR_NOT_FOUND, tour.tourName));
+                }
+            }
         }
         return addressBook;
     }
