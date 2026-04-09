@@ -255,7 +255,7 @@ For example, `h/true` will not apply to `person` contacts.
 <ul>
   <li><code>add type/person n/John Doe p/98765432 e/johnd@example.com a/311 Clementi Ave 2</code> :
   Adds a person contact named <code>John Doe</code> to the contact list.<br>
-  <img src="images/AddCommandExample.png" alt="AddCommandExample></li>
+  <img src="images/AddCommandExample.png" alt="AddCommandExample"></li>
 
   <li><code>add type/fnb n/Nasi Lemak Stall p/91234567 e/fnb@example.com a/Market Street h/true</code> :
   Adds an F&amp;B contact named <code>Nasi Lemak Stall</code> with halal status set to <code>true</code>.</li>
@@ -295,8 +295,9 @@ Edits an existing contact in the contact list.
 <summary><b>Example:</b></summary>
 
 <ul>
-  <li><code>edit 1 p/91234567 e/johndoe@example.com</code> :
-  Edits the first contact by updating the phone number and email.</li>
+  <li><code>edit 1 p/91234567 e/alAhh@example.com</code> :
+  Edits the first contact by updating the phone number and email.<br>
+  <img src="images/EditCommandExample.png" alt="EditCommandExample"></li>
 
   <li><code>edit 2 n/New Name t/</code> :
   Edits the second contact by updating the name and clearing all tags.</li>
@@ -324,7 +325,8 @@ Finds contacts matching a specified type, whose names contain any of the given k
 
 <ul>
   <li><code>find n/John</code> :
-  Finds contacts of any type whose names contain <code>John</code>.</li>
+  Finds contacts of any type whose names contain <code>John</code>.<br>
+  <img src="images/FindCommandExample.png" alt="FindCommandExample"></li>
 
   <li><code>find n/alex david</code> :
   Finds contacts of any type whose names contain <code>alex</code> or <code>david</code>.</li>
@@ -374,7 +376,8 @@ Adds a specified contact from the contact list as a favourite contact.
 
 <ul>
   <li><code>favourite-add 2</code> :
-  Adds the second contact shown in the current contact list as a favourite contact.</li>
+  Adds the second contact shown in the current contact list as a favourite contact.<br>
+  <img src="images/FavouriteAddCommandExample.png" alt="FavouriteAddCommandExample"></li>
 </ul>
 
 </details>
@@ -419,7 +422,8 @@ Adds a tour package to the tour list.
 
 <ul>
   <li><code>tour-add n/Le Royal Tour</code> :
-  Adds a tour named <code>Le Royal Tour</code>.</li>
+  Adds a tour named <code>Le Royal Tour</code>.<br>
+  <img src="images/TourAddCommandExample.png" alt="TourAddCommandExample"></li>
 </ul>
 
 </details>
@@ -442,8 +446,9 @@ Assigns a contact to a tour.
 <summary><b>Example:</b></summary>
 
 <ul>
-  <li><code>tour-assign 1 tour/2</code> :
-  Assigns the first contact to the second tour.</li>
+  <li><code>tour-assign 1 tour/3</code> :
+  Assigns the first contact to the third tour.<br>
+  <img src="images/TourAssignCommandExample.png" alt="TourAssignCommandExample"></li>
 </ul>
 
 </details>
@@ -501,8 +506,9 @@ Finds tours whose names contain any of the given keywords.
   <li><code>tour-find Foodie</code> :
   Finds tours whose names contain <code>Foodie</code>.</li>
 
-  <li><code>tour-find City Walking</code> :
-  Finds tours whose names contain <code>City</code> or <code>Walking</code>.</li>
+  <li><code>tour-find LeWalking Royal</code> :
+  Finds tours whose names contain <code>LeWalking</code> or <code>Royal</code>.<br>
+  <img src="images/TourFindCommandExample.png" alt="TourFindCommandExample"></li>
 </ul>
 
 </details>
@@ -537,7 +543,8 @@ Adds a specified tour from the tour list as a favourite tour.
 
 <ul>
   <li><code>tour-favourite-add 2</code> :
-  Adds the second tour shown in the current tour list as a favourite tour.</li>
+  Adds the second tour shown in the current tour list as a favourite tour.<br>
+  <img src="images/TourFavouriteAddCommandExample.png" alt="TourFavouriteAddCommandExample"></li>
 </ul>
 
 </details>
