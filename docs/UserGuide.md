@@ -547,6 +547,17 @@ Creates a new tour with a specified name, and assigns all contacts from an exist
 * Index must be a positive integer
 * `NAME` must not already exist as a tour
 
+<details>
+<summary><b>Example:</b></summary>
+
+<ul>
+  <li><code>tour-duplicate 1 n/Le Royal Tour Copy</code>:
+  Creates a new tour named <code>Le Royal Tour Copy</code> with all contacts from the first tour assigned to 
+it.<br></li>
+</ul>
+
+</details>
+
 ### Adding tours to favourites: `tour-favourite-add`
 
 Adds a specified tour from the tour list as a favourite tour.
