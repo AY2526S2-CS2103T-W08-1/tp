@@ -99,7 +99,8 @@ Refer to the [Features](#features) below for details of each command.
 * Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) 
   will be rejected.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
-* Parameters not specific to the contact type will cause commands to be rejected.<br>
+* Parameters not specific to the contact type will cause the command to be rejected with an error message shown to 
+  the user.<br>
   e.g. the parameter `h/HALAL_STATUS` is not applicable to a `type/person` contact, the add command will be rejected 
   until a correction is made.
 
@@ -629,15 +630,16 @@ Removes a specified tour as a favourite tour.
 
 ### Tour Management
 
-| Action                    | Command                                                                           | Summary                             |
-|---------------------------|-----------------------------------------------------------------------------------|-------------------------------------|
-| **Add**                   | `tour-add n/NAME` <br> e.g., `tour-add n/Le Royal Tour`                           | Adds a tour to the tour list        |
-| **Delete**                | `tour-delete INDEX` <br> e.g., `tour-delete 2`                                    | Deletes a tour from the tour list   |
-| **Assign**                | `tour-assign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-assign 1 tour/2`     | Assigns a contact to a tour         |
-| **Unassign**              | `tour-unassign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-unassign 3 tour/5` | Unassigns a contact from a tour     |
-| **View**                  | `tour-view INDEX` <br> e.g., `tour-view 1`                                        | Display contacts assigned to a tour |
-| **Find**                  | `tour-find KEYWORD [MORE_KEYWORDS]` <br> e.g., `tour-find City Walking`           | Filters the tour list               |
-| **List**                  | `tour-list`                                                                       | Lists all tours                     |
-| **Tour Favourite Add**    | `tour-favourite-add INDEX` <br> e.g., `tour-favourite-add 1`                      | Adds a tour to favourites           |
-| **Tour Favourite View**   | `tour-favourite-view`                                                             | Displays favourite tours            |
-| **Tour Favourite Remove** | `tour-favourite-remove INDEX` <br> e.g., `tour-favourite-remove 2`                | Removes a tour from favourites      |
+| Action                    | Command                                                                           | Summary                                                |
+|---------------------------|-----------------------------------------------------------------------------------|--------------------------------------------------------|
+| **Add**                   | `tour-add n/NAME` <br> e.g., `tour-add n/Le Royal Tour`                           | Adds a tour to the tour list                           |
+| **Delete**                | `tour-delete INDEX` <br> e.g., `tour-delete 2`                                    | Deletes a tour from the tour list                      |
+| **Assign**                | `tour-assign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-assign 1 tour/2`     | Assigns a contact to a tour                            |
+| **Unassign**              | `tour-unassign CONTACT_INDEX tour/TOUR_INDEX` <br> e.g., `tour-unassign 3 tour/5` | Unassigns a contact from a tour                        |
+| **View**                  | `tour-view INDEX` <br> e.g., `tour-view 1`                                        | Display contacts assigned to a tour                    |
+| **Find**                  | `tour-find KEYWORD [MORE_KEYWORDS]` <br> e.g., `tour-find City Walking`           | Filters the tour list                                  |
+| **List**                  | `tour-list`                                                                       | Lists all tours                                        |
+| **Tour Favourite Add**    | `tour-favourite-add INDEX` <br> e.g., `tour-favourite-add 1`                      | Adds a tour to favourites                              |
+| **Tour Favourite View**   | `tour-favourite-view`                                                             | Displays favourite tours                               |
+| **Tour Favourite Remove** | `tour-favourite-remove INDEX` <br> e.g., `tour-favourite-remove 2`                | Removes a tour from favourites                         |
+| **Tour Duplicate**        | `tour-duplicate INDEX n/NAME` <br> e.g., `tour-duplicate 1 n/Le Chantilly Tour`   | Duplicates content of an existing tour with a new name |
