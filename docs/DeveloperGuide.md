@@ -1042,7 +1042,7 @@ testers are expected to do more *exploratory* testing.
     1. Prerequisites: At least one tour marked as favourite tour.
 
     1. Test case: `tour-favourite-remove 1`<br>
-       Expected: Contact is unmarked as favourite (star removed in GUI). Contact details are updated in the data file.
+       Expected: Tour is unmarked as favourite (star removed in GUI). Tour details are updated in the data file.
 
     1. Test case: Missing fields (e.g. `tour-favourite-remove`)<br>
        Expected: Error message for invalid command format.
