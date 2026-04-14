@@ -460,8 +460,8 @@ Assigns a contact to a tour.
 <summary><b>Example:</b></summary>
 
 <ul>
-  <li><code>tour-assign 1 tour/3</code> :
-  Assigns the first contact to the third tour.<br>
+  <li><code>tour-assign 1 tour/4</code> :
+  Assigns the first contact to the fourth tour.<br>
   <img src="images/TourAssignCommandExample.png" alt="TourAssignCommandExample"></li>
 </ul>
 
@@ -557,9 +557,10 @@ Creates a new tour with a specified name, and assigns all contacts from an exist
 <summary><b>Example:</b></summary>
 
 <ul>
-  <li><code>tour-duplicate 1 n/Le Royal Tour Copy</code>:
-  Creates a new tour named <code>Le Royal Tour Copy</code> with all contacts from the first tour assigned to 
-it.<br></li>
+  <li><code>tour-duplicate 4 n/Le Royal Tour Copy</code>:
+  Creates a new tour named <code>Le Royal Tour Copy</code> with all contacts from the fourth tour assigned to 
+it.<br>
+<img src="images/TourDuplicateCommandExample.png" alt="TourDuplicateCommandExample"></li>
 </ul>
 
 </details>

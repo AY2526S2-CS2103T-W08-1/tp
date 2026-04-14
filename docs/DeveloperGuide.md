@@ -23,11 +23,10 @@ subsequently verified and tweaked accordingly. Namely in:
 tweaked to accurately reflect current implementation. Namely in: `ContactClassDiagram.puml`,
 `EditContactDescriptorClassDiagram.puml`, `FavouriteAddSequenceDiagram.puml`, `FavouriteViewSequenceDiagram.puml`
 * William: Usage of AI Tools (Open AI) as an extra layer of checks for bugs and typos.
+
 * Chen Yoong Shee: Usage of AI Tools (Open AI) to assist in extending tests to support tour find and tour list command,
   subsequently verified and tweaked accordingly. Namely in:
   `TourFindCommandTest.java`, `TourFindCommandParserTest.java`
-* Third party libraries/frameworks used: JavaFX, Jackson, JUnit 5
-
 
 * Reiner: Usage of AI Tools (Claude) to assist in extending tests for tour assign, unassign, and view features, as well as their related test files. All AI-generated code was subsequently verified and tweaked to ensure correctness and consistency with the rest of the codebase. Namely in:
 `TourAssignCommandTest.java`, `TourUnassignCommandTest.java`, `TourViewCommandTest.java`, `TourAssignCommandParserTest.java`, `TourUnassignCommandParserTest.java`, `TourViewCommandParserTest.java`
@@ -43,6 +42,8 @@ tweaked to accurately reflect current implementation. Namely in: `TourAssignSequ
   tweaked to accurately reflect current implementation. Namely in: `UiClassDiagram.puml` and 
 * `UndoSequenceDiagram-Logic.puml`
 * Neryss: Usage of AI Tools (Open AI) as an extra layer of checks for bugs and typos.
+
+* Third party libraries/frameworks used: JavaFX, Jackson, JUnit 5
 
 --------------------------------------------------------------------------------------------------------------------
 
