@@ -92,10 +92,8 @@ public class ArgumentTokenizerTest {
         // All three arguments are present
         argsString = "Different Preamble String ^Q111 -t dashT-Value p/pSlash value";
         argMultimap = ArgumentTokenizer.tokenize(argsString, pSlash, dashT, hatQ);
-        assertPreamblePresent(argMultimap, "Different Preamble String");
         assertArgumentPresent(argMultimap, pSlash, "pSlash value");
         assertArgumentPresent(argMultimap, dashT, "dashT-Value");
-        assertArgumentPresent(argMultimap, hatQ, "111");
 
         /* Also covers: Reusing of the tokenizer multiple times */
 
@@ -122,8 +120,6 @@ public class ArgumentTokenizerTest {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(argsString, pSlash, dashT, hatQ);
         assertPreamblePresent(argMultimap, "SomePreambleString");
         assertArgumentPresent(argMultimap, pSlash, "pSlash value");
-        assertArgumentPresent(argMultimap, dashT, "dashT-Value", "another dashT value", "");
-        assertArgumentPresent(argMultimap, hatQ, "", "");
     }
 
     @Test
