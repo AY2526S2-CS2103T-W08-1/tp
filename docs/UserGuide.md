@@ -96,12 +96,12 @@ Refer to the [Features](#features) below for details of each command.
 * Parameters can be in any order.<br>
   e.g. the parameters `n/NAME p/PHONE_NUMBER` and `p/PHONE_NUMBER n/NAME` are equivalent.
 
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`) 
+* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, `exit` and `clear`)
   will be ignored.<br>
   e.g. if the command specifies `help 123`, it will be interpreted as `help`.
-* Parameters not specific to the contact type will cause the command to be rejected with an error message shown to 
+* Parameters not specific to the contact type will cause the command to be rejected with an error message shown to
   the user.<br>
-  e.g. the parameter `h/HALAL_STATUS` is not applicable to a `type/person` contact, the add command will be rejected 
+  e.g. the parameter `h/HALAL_STATUS` is not applicable to a `type/person` contact, the add command will be rejected
   until a correction is made.
 
 * If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines
@@ -558,7 +558,7 @@ Creates a new tour with a specified name, and assigns all contacts from an exist
 
 <ul>
   <li><code>tour-duplicate 4 n/Le Royal Tour Copy</code>:
-  Creates a new tour named <code>Le Royal Tour Copy</code> with all contacts from the fourth tour assigned to 
+  Creates a new tour named <code>Le Royal Tour Copy</code> with all contacts from the fourth tour assigned to
 it.<br>
 <img src="images/TourDuplicateCommandExample.png" alt="TourDuplicateCommandExample"></li>
 </ul>
