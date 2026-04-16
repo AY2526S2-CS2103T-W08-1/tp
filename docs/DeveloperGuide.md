@@ -39,7 +39,7 @@ tweaked to accurately reflect current implementation. Namely in: `TourAssignSequ
 * `JsonAdaptedContactTest`, `ModelManagerTest`, `TourDuplicateCommandParserTest`
 * `AddressBookParserTest`, `TourDuplicateCommandTest`, `AddCommandTest`
 * Neryss: Usage of AI Tools (Open AI) to assist in creating Plant UML diagrams which are subsequently verified and
-  tweaked to accurately reflect current implementation. Namely in: `UiClassDiagram.puml` and 
+  tweaked to accurately reflect current implementation. Namely in: `UiClassDiagram.puml` and
 * `UndoSequenceDiagram-Logic.puml`
 * Neryss: Usage of AI Tools (Open AI) as an extra layer of checks for bugs and typos.
 
@@ -203,8 +203,8 @@ extended to include these additional fields.
 
 ### Tour Packages
 
-Bivago's content management supports the creation of tour packages, represented by `Tour` class. Each `Tour` is 
-uniquely identified by its `Name`. The class `TourFavouriteStatus` serves as a wrapper class for the boolean state 
+Bivago's content management supports the creation of tour packages, represented by `Tour` class. Each `Tour` is
+uniquely identified by its `Name`. The class `TourFavouriteStatus` serves as a wrapper class for the boolean state
 of the tour.
 
 <img src="images/TourClassDiagram.png" width="600" />
@@ -832,7 +832,7 @@ testers are expected to do more *exploratory* testing.
 1. Saving and loading
 
    1. Modify the app by using commands to add or delete tours and contacts.
-   
+
    1. Close the window.
 
    1. Re-launch the app by double-clicking the jar file.<br>

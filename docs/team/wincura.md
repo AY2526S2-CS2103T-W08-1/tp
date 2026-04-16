@@ -8,7 +8,7 @@ title: John Doe's Project Portfolio Page
 **Bivago is a desktop application that helps tour guides streamline the process involved in planning and executing new
 group tours.**
 It helps them quickly look up contacts for attractions, hotels, restaurants and drivers before, during and after different types
-of tours that the tour guides offer. 
+of tours that the tour guides offer.
 
 The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java.
 
@@ -42,7 +42,7 @@ Given below are my contributions to the project.
 
 * **Enhancements to existing features**:
   * Designed the icon of the application
-  
+
 * **Documentation**:
   * User Guide:
     * Updated the Summary and the `Quick Start` section
