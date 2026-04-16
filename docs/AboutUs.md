@@ -34,7 +34,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 <img src="images/wincura.png" width="200px">
 
 [[github](https://github.com/wincura)]
-[[portfolio](team/johndoe.md)]
+[[portfolio](team/wincura.md)]
 
 * Role: Developer
 * Responsibilities: OOP Logic
