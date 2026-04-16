@@ -1,6 +1,6 @@
 ---
 layout: page
-title: John Doe's Project Portfolio Page
+title: William Scott Win's Project Portfolio Page
 ---
 
 ### Project: Bivago
